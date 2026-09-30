@@ -10,47 +10,36 @@
 
   /* ── índice de todos los archivos por id ── */
   var porId = {};
-  ["guias", "skills", "plantillas", "paquetes"].forEach(function (k) { (M[k] || []).forEach(function (m) { porId[m.id] = m; }); });
-  if (M.kit) porId.kit = M.kit;
+  var P = M.paquetes || {};
+  Object.keys(P).forEach(function (k) { porId[P[k].id] = P[k]; });
+  (M.material || []).forEach(function (m) { porId[m.id] = m; });
 
   function boton(m, clase, texto) {
     return '<a class="btn ' + clase + ' dl" href="descargas/' + esc(m.archivo) + '" data-id="' + esc(m.id) + '" download>' +
       ICON + "<span>" + texto + "</span></a>";
   }
 
-  /* ── render de materiales ── */
-  var lg = $("#lista-guias");
-  if (lg) lg.innerHTML = (M.guias || []).map(function (m) {
-    return '<li class="file"><div class="ficon">' + tipo(m.archivo) + '</div><div>' +
-      (m.etiqueta ? '<span class="tag">' + esc(m.etiqueta) + "</span>" : "") +
+  $$("[data-peso]").forEach(function (e) { var m = P[e.getAttribute("data-peso")]; if (m) e.textContent = "ZIP · " + m.peso; });
+
+  /* ── paquete 1: archivo por archivo ── */
+  var lm = $("#lista-material");
+  if (lm) lm.innerHTML = (M.material || []).map(function (m) {
+    return '<li class="file"><div class="ficon' + (tipo(m.archivo) === "PDF" ? " pdf" : "") + '">' + tipo(m.archivo) + '</div><div>' +
       "<h4>" + esc(m.titulo) + "</h4><p>" + esc(m.desc) + '</p><div class="sz">' + esc(m.archivo) + " · " + esc(m.peso) + "</div></div>" +
-      boton(m, "btn-ghost", "Descargar") + "</li>";
+      boton(m, "btn-ghost btn-sm", "Descargar") + "</li>";
   }).join("");
 
-  var lp = $("#lista-paquetes");
-  if (lp) lp.innerHTML = (M.paquetes || []).map(function (m) {
-    return '<li class="file"><div class="ficon zip">ZIP</div><div><h4>' + esc(m.titulo) + "</h4><p>" + esc(m.desc) +
-      '</p><div class="sz">' + esc(m.archivo) + " · " + esc(m.peso) + "</div></div>" + boton(m, "btn-ghost", "Descargar") + "</li>";
+  /* ── paquete 2: catálogo de skills ── */
+  var lk = $("#lista-kit");
+  if (lk) lk.innerHTML = (M.kitSkills || []).map(function (c) {
+    return '<div class="cat"><div class="cat-h"><h4>' + esc(c.titulo) + '</h4><span>' + c.skills.length + " skills</span></div><ul>" +
+      c.skills.map(function (k) {
+        var g = k.grado.toLowerCase(), cls = g === "alta" ? "lvl-a" : g === "media" ? "lvl-m" : "lvl-b";
+        var cmd = "cp -r kit-skills/" + c.cat + "/" + k.id + " ~/.claude/skills/";
+        return '<li><div class="k-top"><code class="k-name">' + esc(k.id) + '</code><span class="lvl ' + cls + '">' + esc(k.grado) + "</span></div>" +
+          "<p>" + esc(k.desc) + '</p><button class="copy copy-cmd" data-text="' + esc(cmd) + '" aria-label="Copiar comando para instalar ' + esc(k.id) + '">Copiar instalación</button></li>';
+      }).join("") + "</ul></div>";
   }).join("");
-
-  var ls = $("#lista-skills");
-  if (ls) ls.innerHTML = (M.skills || []).map(function (m) {
-    var g = m.grado.toLowerCase(), cls = g === "alta" ? "lvl-a" : g === "media" ? "lvl-m" : "lvl-b";
-    var cmd = "cp -r " + m.id + " ~/.claude/skills/";
-    return '<article class="skill"><div class="skill-top"><h4>' + esc(m.id) + '</h4><span class="lvl ' + cls + '">Libertad ' + esc(m.grado) +
-      '</span></div><p class="d">' + esc(m.desc) + '</p><p class="e"><b>Enseña:</b> ' + esc(m.ensena) + '</p><div class="skill-actions">' +
-      boton(m, "btn-navy btn-sm", "ZIP") +
-      '<div class="cmd"><code>' + esc(cmd) + '</code><button class="copy" data-text="' + esc(cmd) + '" aria-label="Copiar comando de instalación">Copiar</button></div>' +
-      "</div></article>";
-  }).join("");
-
-  var lt = $("#lista-plantillas");
-  if (lt) lt.innerHTML = (M.plantillas || []).map(function (m) {
-    return '<article class="tpl"><span class="idx">' + esc(m.id) + "</span><h4>" + esc(m.titulo) + "</h4><p>" + esc(m.desc) + "</p>" +
-      boton(m, "btn-ghost btn-sm", "Descargar") + "</article>";
-  }).join("");
-
-  if (M.kit) $$("[data-kit-peso]").forEach(function (e) { e.textContent = "ZIP · " + M.kit.peso; });
 
   /* ── aviso ── */
   var toast = $("#toast"), tt;
@@ -73,7 +62,7 @@
   }
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a.dl"); if (!a) return;
-    var m = porId[a.hasAttribute("data-kit") ? "kit" : a.getAttribute("data-id")];
+    var m = porId[a.getAttribute("data-id")];
     if (m && m.drive && M.fuente === "drive") { e.preventDefault(); descargarDrive(m.drive); }
     estado(a, "busy", "Descargando…");
     setTimeout(function () {

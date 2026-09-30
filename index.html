@@ -28,12 +28,12 @@
       <a href="#conocimiento">Conocimiento</a>
       <a href="#sesion">Sesión</a>
       <a href="#laboratorios">Laboratorios</a>
-      <a href="#materiales">Materiales</a>
+      <a href="#descargas">Descargas</a>
       <a href="#empresa">En tu empresa</a>
     </nav>
-    <a class="btn btn-sm btn-red dl" href="descargas/kit-completo.zip" data-kit download>
+    <a class="btn btn-sm btn-red" href="#descargas">
       <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-      <span>Kit completo</span>
+      <span>Descargas</span>
     </a>
   </div>
 </header>
@@ -48,14 +48,18 @@
       <p class="kicker">Taller en vivo · 30 de septiembre de 2026 · Materiales</p>
       <h1>Skills con <span class="g">Claude Code</span></h1>
       <p class="claim">Deja de repetir el mismo prompt. Enséñaselo una vez.</p>
-      <p class="lede">Aquí está todo lo que vimos en las tres horas y lo que no cupo: el conocimiento de fondo, los seis laboratorios, cuatro skills funcionando, tres plantillas y un plan para llevarlo a tu equipo.</p>
+      <p class="lede">Aquí está lo que vimos y lo que te llevas: el manual, la tarjeta de referencia, la guía de tus primeros 30 días, el prompt destilador y un kit con trece skills listas para instalar en tu equipo.</p>
       <div class="hero-cta">
-        <a class="btn btn-red btn-lg dl" href="descargas/kit-completo.zip" data-kit download>
+        <a class="btn btn-red btn-lg dl" href="descargas/material-para-llevar.zip" data-id="material" download>
           <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-          <span>Descargar el kit completo</span>
-          <small data-kit-peso>ZIP · 34 KB</small>
+          <span>Material para llevarte</span>
+          <small data-peso="material">ZIP</small>
         </a>
-        <a class="btn btn-glass btn-lg" href="#materiales">Ver cada material</a>
+        <a class="btn btn-glass btn-lg dl" href="descargas/kit-asistente-skills-claude-code.zip" data-id="kit" download>
+          <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+          <span>Kit del asistente</span>
+          <small data-peso="kit">ZIP</small>
+        </a>
       </div>
     </div>
 
@@ -76,7 +80,7 @@
       <div><dt>Duración</dt><dd>3 horas</dd></div>
       <div><dt>Teclado</dt><dd>92 min</dd></div>
       <div><dt>Laboratorios</dt><dd>6</dd></div>
-      <div><dt>Artefactos</dt><dd>12</dd></div>
+      <div><dt>Skills en el kit</dt><dd>13</dd></div>
     </dl>
   </div>
 </section>
@@ -270,43 +274,102 @@ quedaron desactualizadas.</pre>
       <article class="lab rv"><span class="n">05</span><h3>Publicar y clonar</h3><p>Saca tu skill de tu máquina y corre la de alguien más sin explicación.</p><p class="meta">6 min · individual</p></article>
       <article class="lab rv"><span class="n">06</span><h3>La skill saboteada</h3><p>Tres fallas escondidas: frontmatter, descripción y rutas. Encuéntralas.</p><p class="meta">9 min · en pareja</p></article>
     </div>
-    <div class="center rv">
-      <a class="btn btn-navy dl" href="descargas/laboratorios.zip" data-id="laboratorios" download>
-        <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-        <span>Descargar los seis laboratorios</span><small>ZIP · 7 KB</small>
-      </a>
+  </div>
+</section>
+
+<!-- ── destilador ── -->
+<section class="sec" id="destilador">
+  <div class="wrap">
+    <div class="distill rv">
+      <div>
+        <p class="eyebrow">El componente que más vas a usar</p>
+        <h2>El prompt destilador</h2>
+        <p>Cada vez que resuelvas algo con Claude y pienses «esto lo voy a volver a necesitar», pégalo en esa misma conversación. Ya contiene todo lo que la skill necesita: el contexto que diste, las correcciones que hiciste y el resultado que aceptaste.</p>
+        <ul class="ticks">
+          <li>Terminaste una tarea y el resultado te sirvió</li>
+          <li>Tuviste que corregir a Claude dos o tres veces</li>
+          <li>Diste contexto que vas a tener que volver a dar</li>
+        </ul>
+        <p class="note">La versión completa, con el análisis de seis preguntas y la variante para equipo, viene en el material para llevarte.</p>
+      </div>
+      <div class="code">
+        <div class="code-h"><span>Variante corta · pégala al final de la conversación</span><button class="copy" data-copy="destilar" aria-label="Copiar prompt destilador">Copiar</button></div>
+<pre id="destilar">Destila esta conversación en un SKILL.md de Claude Code.
+
+Nombre en gerundio. Descripción en tercera persona con la fórmula
+[qué hace] + "Úsala cuando..." usando las palabras que yo usé de verdad
+en esta conversación, no lenguaje de manual. En el cuerpo pon solo el
+contexto que tuve que darte y que no sabías; quita todo lo que ya sabías.
+Menos de 60 líneas. Termina con un comentario del grado de libertad.
+
+Dame el archivo y el mkdir. Nada más.</pre>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── materiales ── -->
-<section class="sec alt" id="materiales">
+<!-- ── descargas ── -->
+<section class="sec alt" id="descargas">
   <div class="wrap">
     <header class="shead rv">
       <p class="eyebrow">Descargas</p>
-      <h2>Artefactos para llevarte</h2>
-      <p>Todo descarga directo, sin salir de esta página.</p>
+      <h2>Dos paquetes para llevarte</h2>
+      <p>Lo que se lee de corrido va en PDF. Lo que se copia, se pega o se instala se queda en markdown, su formato nativo. Todo descarga directo, sin salir de esta página.</p>
     </header>
 
-    <div class="group rv">
-      <div class="group-h"><h3>Guías y referencia</h3><p>Para consultar, compartir con tu equipo y medir.</p></div>
-      <ul class="files" id="lista-guias"></ul>
+    <div class="packs">
+      <article class="pack rv" id="paquete-material">
+        <div class="pack-h">
+          <span class="pack-n">Paquete 1</span>
+          <h3>Material para llevarte</h3>
+          <p>Para leer, imprimir y consultar. Cinco archivos.</p>
+          <a class="btn btn-red btn-lg dl" href="descargas/material-para-llevar.zip" data-id="material" download>
+            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+            <span>Descargar paquete</span><small data-peso="material">ZIP</small>
+          </a>
+        </div>
+        <ul class="files" id="lista-material"></ul>
+      </article>
+
+      <article class="pack pack-dark rv" id="paquete-kit">
+        <div class="pack-h">
+          <span class="pack-n">Paquete 2</span>
+          <h3>Kit del asistente</h3>
+          <p>Trece skills funcionando, tres plantillas, el destilador, las fuentes editables y todo el material navegable en un solo HTML.</p>
+          <a class="btn btn-light btn-lg dl" href="descargas/kit-asistente-skills-claude-code.zip" data-id="kit" download>
+            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+            <span>Descargar kit</span><small data-peso="kit">ZIP</small>
+          </a>
+        </div>
+<pre class="tree tree-dark">kit/
+├── 00-EMPIEZA-AQUI.md
+├── 03-PROMPT-DESTILADOR.md
+├── KIT-COMPLETO.html      <span class="c-dim">← todo navegable, sin conexión</span>
+├── PDF/                   <span class="c-dim">← manual, tarjeta, 30 días</span>
+├── kit-skills/            <span class="c-dim">← 13 skills en 4 dominios</span>
+├── 04-PLANTILLAS/         <span class="c-dim">← mínima, multiarchivo, baja libertad</span>
+└── fuente-editable/       <span class="c-dim">← markdown de los PDF</span></pre>
+      </article>
     </div>
 
     <div class="group rv">
-      <div class="group-h"><h3>Skills funcionando</h3><p>Ordenadas por complejidad. Léelas en este orden, cópialas y úsalas hoy.</p></div>
-      <div class="skills" id="lista-skills"></div>
+      <div class="group-h"><h3>Las trece skills del kit</h3><p>Léelas antes de escribir las tuyas: muestran las decisiones, no solo las reglas.</p></div>
+      <div class="cats" id="lista-kit"></div>
     </div>
 
-    <div class="group rv">
-      <div class="group-h"><h3>Plantillas</h3><p>El punto de partida para las tuyas.</p></div>
-      <div class="tpls" id="lista-plantillas"></div>
+    <div class="install rv">
+      <div class="code">
+        <div class="code-h"><span>Una categoría completa</span><button class="copy" data-copy="i-cat" aria-label="Copiar">Copiar</button></div>
+<pre id="i-cat">cp -r kit-skills/calidad-documental/* ~/.claude/skills/</pre>
+      </div>
+      <div class="code">
+        <div class="code-h"><span>Para todo un equipo, en un repositorio</span><button class="copy" data-copy="i-team" aria-label="Copiar">Copiar</button></div>
+<pre id="i-team">mkdir -p .claude/skills
+cp -r kit-skills/desarrollo/* .claude/skills/
+git add .claude/skills && git commit -m "add: kit de skills de desarrollo"</pre>
+      </div>
     </div>
-
-    <div class="group rv">
-      <div class="group-h"><h3>Paquetes</h3><p>Todo agrupado, para guardar o subir al repositorio de tu equipo.</p></div>
-      <ul class="files" id="lista-paquetes"></ul>
-    </div>
+    <p class="note center-t">Verifica en Claude Code con <code>/skills</code>. Deben aparecer.</p>
   </div>
 </section>
 
@@ -314,17 +377,17 @@ quedaron desactualizadas.</pre>
 <section class="sec" id="empresa">
   <div class="wrap">
     <header class="shead rv">
-      <p class="eyebrow">Implementación</p>
-      <h2>Una skill que solo funciona en tu máquina es una nota personal</h2>
-      <p>En el repositorio es infraestructura del equipo. Este es el camino de 30 días.</p>
+      <p class="eyebrow">Tus primeros 30 días</p>
+      <h2>Para que esto no se quede en el webinar</h2>
+      <p>La mayoría de quienes ven un webinar no aplican nada. No es falta de interés: es que no hay un siguiente paso concreto. Este es el siguiente paso.</p>
     </header>
 
     <ol class="road rv">
-      <li><span class="wk">Semana 0</span><h3>Elige tres casos</h3><p>¿Qué le pedimos a Claude cada semana, escribiendo más o menos lo mismo? Nada inventado.</p></li>
-      <li><span class="wk">Semana 1</span><h3>Construye con A / B</h3><p>Tres evaluaciones antes de escribir la skill. La que no debe dispararse es la que más evita.</p></li>
-      <li><span class="wk">Semana 2</span><h3>Llévala al repo</h3><p>Muévela a <code>.claude/skills/</code> y revísala como código antes del merge.</p></li>
-      <li><span class="wk">Semana 3</span><h3>Úsala tres veces</h3><p>Anota dónde tropieza, una línea basta. Corrige una cosa. Prueba en Haiku, Sonnet y Opus.</p></li>
-      <li><span class="wk">Día 30</span><h3>Check-in</h3><p>¿Sigue en uso? ¿Se iteró? ¿Alguien más la usa? La meta es el nivel <em>Madura</em>.</p></li>
+      <li><span class="wk">Día 1 · 20 min</span><h3>Instala y observa</h3><p>Copia <code>redactando-commits</code>, pide un mensaje de commit y fíjate en que no escribiste <code>/</code>. Anota tu caso y destílalo.</p></li>
+      <li><span class="wk">Semana 1</span><h3>Úsala, no la mejores</h3><p>Tres usos reales mínimo. Una línea cada vez que tropiece. Sin datos de uso, las mejoras son suposiciones.</p></li>
+      <li><span class="wk">Semana 2</span><h3>Una corrección y una más</h3><p>Corrige una sola cosa con el ciclo. Construye la segunda en otra categoría: sale en la mitad del tiempo.</p></li>
+      <li><span class="wk">Semana 3</span><h3>Llévala al equipo</h3><p>La que más usaste, limpia con la variante para equipo del destilador. Súbela y pide una prueba sin explicar nada.</p></li>
+      <li><span class="wk">Semana 4</span><h3>Mide y decide</h3><p>¿Cuántas en uso real? ¿Cuál no se invocó en dos semanas? ¿Alguien más las usa? Corre <code>auditando-skills</code>.</p></li>
     </ol>
 
     <div class="split tight">
@@ -349,22 +412,24 @@ quedaron desactualizadas.</pre>
       </div>
 
       <div class="rv">
-        <div class="levels">
-          <h3>Niveles de madurez</h3>
+        <div class="levels errors">
+          <h3>Los tres errores que hacen que esto se abandone</h3>
           <ol>
-            <li><b>Carga</b><span>Responde a <code>/nombre</code>, no se dispara sola</span></li>
-            <li><b>Funciona</b><span>Se dispara sola. La meta al cierre del taller</span></li>
-            <li><b>Compartible</b><span>Otra persona la corrió sin explicación</span></li>
-            <li><b>Madura</b><span>Con evaluaciones e iteración documentada. La meta a 30 días</span></li>
+            <li><b>Empezar por la skill perfecta</b><span>La primera debe ser fea y útil. La perfecta nunca se termina.</span></li>
+            <li><b>Escribir cinco de golpe</b><span>Una, usada tres veces, enseña más que cinco sin estrenar.</span></li>
+            <li><b>Mejorarla sin usarla</b><span>Las mejoras que se te ocurren en abstracto casi nunca son las que el uso revela.</span></li>
           </ol>
         </div>
-        <div class="code share">
-          <div class="code-h"><span>Compartir con tu equipo</span><button class="copy" data-copy="share-cmd" aria-label="Copiar comandos">Copiar</button></div>
-<pre id="share-cmd">mkdir -p .claude/skills
-cp -r ~/.claude/skills/mi-skill .claude/skills/
-git add .claude/skills
-git commit -m "add: skill mi-skill"
-git push</pre>
+        <div class="levels">
+          <h3>Semana 4 · qué hacer con cada respuesta</h3>
+          <div class="tbl-wrap"><table class="tbl">
+            <tbody>
+              <tr><td>Tienes 1 en uso</td><td>Suficiente. Es más de lo que tiene la mayoría</td></tr>
+              <tr><td>Tienes 3 o más</td><td>Revisa si alguna se solapa con otra</td></tr>
+              <tr><td>Una no se usó en 2 semanas</td><td>Bórrala. Una skill que miente es peor que ninguna</td></tr>
+              <tr><td>Nadie más las usa</td><td>Pregunta por qué. Suele ser que no saben que existen</td></tr>
+            </tbody>
+          </table></div>
         </div>
         <p class="note warn">Antes de ejecutar una skill que no escribiste, lee su <code>allowed-tools</code>. Preaprueba, no restringe.</p>
       </div>
