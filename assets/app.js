@@ -74,7 +74,7 @@
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a.dl"); if (!a) return;
     var m = porId[a.hasAttribute("data-kit") ? "kit" : a.getAttribute("data-id")];
-    if (m && m.drive) { e.preventDefault(); descargarDrive(m.drive); }
+    if (m && m.drive && M.fuente === "drive") { e.preventDefault(); descargarDrive(m.drive); }
     estado(a, "busy", "Descargando…");
     setTimeout(function () {
       estado(a, "done", "Listo");
