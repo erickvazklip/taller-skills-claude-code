@@ -64,10 +64,16 @@
     var a = e.target.closest("a.dl"); if (!a) return;
     var m = porId[a.getAttribute("data-id")];
     if (m && m.drive && M.fuente === "drive") { e.preventDefault(); descargarDrive(m.drive); }
+    var nombre = m ? m.archivo : decodeURIComponent(a.getAttribute("href").split("/").pop());
+    if (!a.classList.contains("btn")) {
+      a.classList.add("got"); avisar("Descargando " + nombre);
+      setTimeout(function () { a.classList.remove("got"); }, 1800);
+      return;
+    }
     estado(a, "busy", "Descargando…");
     setTimeout(function () {
       estado(a, "done", "Listo");
-      avisar("Descargando " + (m ? m.archivo : "archivo"));
+      avisar("Descargando " + nombre);
       setTimeout(function () { estado(a, null); }, 2200);
     }, 450);
   });
@@ -136,8 +142,10 @@
 
   /* ── barra: translúcida al salir de la portada, sección activa ── */
   var nav = $("#nav"), hero = $(".hero");
-  function alScroll() { nav.classList.toggle("solid", window.scrollY > hero.offsetHeight - 70); }
-  window.addEventListener("scroll", alScroll, { passive: true }); alScroll();
+  if (nav && hero) {
+    var alScroll = function () { nav.classList.toggle("solid", window.scrollY > hero.offsetHeight - 70); };
+    window.addEventListener("scroll", alScroll, { passive: true }); alScroll();
+  }
 
   var links = $$(".nav-links a");
   if ("IntersectionObserver" in window) {
