@@ -14,21 +14,21 @@ window.MATERIALES = {
   fuente: "sitio",
 
   paquetes: {
-    material: { id: "material", archivo: "material-para-llevar.zip", drive: "", peso: "918 KB" },
-    kit:      { id: "kit", archivo: "kit-asistente-skills-claude-code.zip", drive: "", peso: "1 MB" }
+    material: { id: "material", archivo: "material-para-llevar.zip", drive: "1arqcBvichTm5fuDzU4KiCTtjyxPeKaGi", peso: "918 KB" },
+    kit:      { id: "kit", archivo: "kit-asistente-skills-claude-code.zip", drive: "1zU4ObJYU_5aL_eDyxsVkTSSnJ90H-xVh", peso: "1 MB" }
   },
 
   /* Paquete 1 · lo que se llevan, archivo por archivo */
   material: [
-    { id: "empieza", n: "00", titulo: "Empieza aquí", archivo: "00-Empieza-aqui.pdf", drive: "", peso: "37 KB",
+    { id: "empieza", n: "00", titulo: "Empieza aquí", archivo: "00-Empieza-aqui.pdf", drive: "1C2Lggb2CMfzA_uX-2Hn5ag5DiV_pqKz6", peso: "37 KB",
       desc: "Qué hay en el kit, cómo instalar las skills y qué hacer si solo tienes 20 minutos hoy." },
-    { id: "manual", n: "01", titulo: "Manual de Skills para Claude Code", archivo: "01-Manual-Skills-Claude-Code.pdf", drive: "", peso: "1 MB",
+    { id: "manual", n: "01", titulo: "Manual de Skills para Claude Code", archivo: "01-Manual-Skills-Claude-Code.pdf", drive: "1QdnNrPTQJKBdkqgchHUo0agibIWCE4Ks", peso: "1 MB",
       desc: "Fundamentos, cómo se crean, políticas de creación y seguridad, buenas prácticas y diagnóstico. Con índice navegable." },
-    { id: "tarjeta", n: "02", titulo: "Tarjeta de referencia", archivo: "02-Tarjeta-de-referencia.pdf", drive: "", peso: "48 KB",
+    { id: "tarjeta", n: "02", titulo: "Tarjeta de referencia", archivo: "02-Tarjeta-de-referencia.pdf", drive: "1gOmhmoprOrfd2YlUEdjK9fvBjnnYF9e6", peso: "48 KB",
       desc: "Dos páginas. Imprímela a doble cara y pégala junto al monitor." },
-    { id: "treinta", n: "03", titulo: "Tus primeros 30 días", archivo: "03-Primeros-30-dias.pdf", drive: "", peso: "45 KB",
+    { id: "treinta", n: "03", titulo: "Tus primeros 30 días", archivo: "03-Primeros-30-dias.pdf", drive: "1DfHZLz0CK0lZYnPsg5nNI9S51gyVtSlx", peso: "45 KB",
       desc: "Guía de adopción semana por semana, para que esto no se quede en el webinar." },
-    { id: "destilador", n: "03", titulo: "El prompt destilador", archivo: "03-PROMPT-DESTILADOR.md", drive: "", peso: "6 KB",
+    { id: "destilador", n: "03", titulo: "El prompt destilador", archivo: "03-PROMPT-DESTILADOR.md", drive: "1fqw-KZB_hBRBKUuqp-SzvFpcX8KLp64v", peso: "6 KB",
       desc: "Convierte una conversación en una skill reutilizable. En markdown porque se copia y se pega." }
   ],
 
