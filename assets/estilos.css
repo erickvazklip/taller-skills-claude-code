@@ -354,6 +354,7 @@ code{font-family:var(--f-m);font-size:.86em;background:var(--bg-alt);border:1px 
   transition:transform .5s var(--spring),opacity .3s}
 .toast.show{transform:translate(-50%,0) scale(1);opacity:1}
 
+@media (min-width:681px){.hero h1 .g{display:block;white-space:nowrap}}
 /* ══ responsivo ══ */
 .split>*,.skills>*,.labs>*,.tpls>*,.rules>*,.grados>*,.road>*,.docs>*,.layers>*,.tie>*,.hero-in>*,.cycle>*{min-width:0}
 @media (max-width:1060px){
