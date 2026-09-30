@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0D1A45">
-<title>Skills con Claude Code · Materiales del taller · OmniSys</title>
-<meta name="description" content="Conocimiento, laboratorios, skills de ejemplo, plantillas y plan de adopción del taller Skills con Claude Code. Descarga todo el material.">
-<meta property="og:title" content="Skills con Claude Code · Materiales del taller">
-<meta property="og:description" content="Deja de repetir el mismo prompt. Enséñaselo una vez. Todo el material para llevar skills a tu empresa.">
+<title>Skills con Claude Code · Webinar OmniSys</title>
+<meta name="description" content="El material del webinar Skills con Claude Code: conceptos, las seis demos, el prompt destilador, el kit de trece skills y la guía de tus primeros 30 días.">
+<meta property="og:title" content="Skills con Claude Code · Webinar OmniSys">
+<meta property="og:description" content="Deja de repetir el mismo prompt. Enséñaselo una vez.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1A45'/%3E%3Ctext x='32' y='43' font-family='Verdana' font-weight='700' font-size='30' fill='%23FF3A41' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,20 +16,20 @@
 <link rel="stylesheet" href="assets/estilos.css">
 <script>document.documentElement.classList.add("js");</script>
 </head>
-<body>
+<body data-base="">
 
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
-<!-- ── barra translúcida ── -->
-<header class="nav" id="nav">
+<header class="nav on-dark" id="nav">
   <div class="nav-in">
     <a class="brand" href="#inicio" aria-label="OmniSys, inicio"><span class="o">Omni</span><span class="s">Sys</span></a>
     <nav class="nav-links" aria-label="Secciones">
-      <a href="#conocimiento">Conocimiento</a>
-      <a href="#sesion">Sesión</a>
-      <a href="#laboratorios">Laboratorios</a>
+      <a href="#conceptos">Conceptos</a>
+      <a href="#demos">Las demos</a>
+      <a href="#destilador">Destilador</a>
       <a href="#descargas">Descargas</a>
-      <a href="#empresa">En tu empresa</a>
+      <a href="#treinta">30 días</a>
+      <a href="webinar/">Detrás del webinar</a>
     </nav>
     <a class="btn btn-sm btn-red" href="#descargas">
       <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
@@ -40,71 +40,68 @@
 
 <main id="contenido">
 
-<!-- ── portada ── -->
+<!-- ═════ portada ═════ -->
 <section class="hero" id="inicio">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-in">
-    <div class="rise">
-      <p class="kicker">Taller en vivo · 30 de septiembre de 2026 · Materiales</p>
-      <h1>Skills con <span class="g">Claude Code</span></h1>
-      <p class="claim">Deja de repetir el mismo prompt. Enséñaselo una vez.</p>
-      <p class="lede">Aquí está lo que vimos y lo que te llevas: el manual, la tarjeta de referencia, la guía de tus primeros 30 días, el prompt destilador y un kit con trece skills listas para instalar en tu equipo.</p>
-      <div class="hero-cta">
-        <a class="btn btn-red btn-lg dl" href="descargas/material-para-llevar.zip" data-id="material" download>
-          <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-          <span>Material para llevarte</span>
-          <small data-peso="material">ZIP</small>
-        </a>
-        <a class="btn btn-glass btn-lg dl" href="descargas/kit-asistente-skills-claude-code.zip" data-id="kit" download>
-          <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-          <span>Kit del asistente</span>
-          <small data-peso="kit">ZIP</small>
-        </a>
-      </div>
+  <div class="wrap hero-in">
+    <p class="kicker rise"><i></i>Webinar · 30 de septiembre de 2026</p>
+    <h1 class="rise d1">Skills con <span class="g">Claude Code</span></h1>
+    <p class="claim rise d2">Deja de repetir el mismo prompt. Enséñaselo una vez.</p>
+    <p class="lede rise d2">Tu referencia después de la transmisión: los conceptos, las seis demos tal como las viste, el prompt destilador y un kit de trece skills listas para instalar en tu equipo.</p>
+    <div class="hero-cta rise d3">
+      <a class="btn btn-red btn-lg dl" href="descargas/material-para-llevar.zip" data-id="material" download>
+        <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+        <span>Material para llevarte</span><small data-peso="material">ZIP</small>
+      </a>
+      <a class="btn btn-glass btn-lg dl" href="descargas/kit-asistente-skills-claude-code.zip" data-id="kit" download>
+        <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+        <span>Kit del asistente</span><small data-peso="kit">ZIP</small>
+      </a>
     </div>
 
-    <div class="term rise" aria-label="Ejemplo de skill en la terminal">
-      <div class="tbar"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>~/.claude/skills/resumiendo-cambios/SKILL.md</span></div>
-<pre class="tbody"><span class="dim">---</span>
-<span class="k">name:</span> <span class="v">resumiendo-cambios</span>
-<span class="k">description:</span> <span class="v">Resume los cambios sin commitear
-  y señala lo riesgoso. Úsala cuando el
-  usuario pregunte qué cambió o pida un commit.</span>
+    <div class="window rise" aria-label="Una skill en la terminal">
+      <div class="window-bar"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>~/.claude/skills/redactando-commits/SKILL.md</span></div>
+<pre><span class="dim">---</span>
+<span class="k">name:</span> <span class="v">redactando-commits</span>
+<span class="k">description:</span> <span class="v">Redacta el mensaje de commit a partir de los
+  cambios preparados, siguiendo commits convencionales.
+  Úsala cuando el usuario pida un commit o un mensaje de commit.</span>
 <span class="dim">---</span>
 
-<span class="v">&gt; ¿qué cambié hoy?</span>
-<span class="ok">✓ skill cargada · 3 archivos · 1 riesgo</span></pre>
+<span class="me">&gt; dame un mensaje de commit para esto</span>
+<span class="ok">✓ skill cargada sin escribir /</span>
+<span class="v">feat(facturas): agrega cupones de descuento</span></pre>
     </div>
 
     <dl class="facts rise">
-      <div><dt>Duración</dt><dd>3 horas</dd></div>
-      <div><dt>Teclado</dt><dd>92 min</dd></div>
-      <div><dt>Laboratorios</dt><dd>6</dd></div>
+      <div><dt>Duración</dt><dd>90 min</dd></div>
+      <div><dt>Demos en vivo</dt><dd>6</dd></div>
       <div><dt>Skills en el kit</dt><dd>13</dd></div>
+      <div><dt>Documentos</dt><dd>5</dd></div>
     </dl>
   </div>
 </section>
 
-<!-- ── conocimiento ── -->
-<section class="sec" id="conocimiento">
+<!-- ═════ conceptos ═════ -->
+<section class="sec" id="conceptos">
   <div class="wrap">
     <header class="shead rv">
-      <p class="eyebrow">Conocimiento general</p>
+      <p class="eyebrow">Conceptos</p>
       <h2>La descripción está siempre en contexto. El cuerpo, no.</h2>
-      <p>Ese es todo el truco. Lo demás son las decisiones que se desprenden de él.</p>
+      <p class="lead">Ese es todo el mecanismo. Lo demás son decisiones que se desprenden de él.</p>
     </header>
 
-    <div class="seg rv" role="tablist" aria-label="Temas">
-      <span class="seg-ind" aria-hidden="true"></span>
-      <button role="tab" aria-selected="true" aria-controls="t-anat" id="b-anat">Anatomía</button>
-      <button role="tab" aria-selected="false" aria-controls="t-desc" id="b-desc" tabindex="-1">Descripción</button>
-      <button role="tab" aria-selected="false" aria-controls="t-lib" id="b-lib" tabindex="-1">Libertad</button>
-      <button role="tab" aria-selected="false" aria-controls="t-capa" id="b-capa" tabindex="-1">Qué capa</button>
-      <button role="tab" aria-selected="false" aria-controls="t-diag" id="b-diag" tabindex="-1">Diagnóstico</button>
+    <div class="seg-wrap">
+      <div class="seg" role="tablist" aria-label="Temas">
+        <span class="seg-ind" aria-hidden="true"></span>
+        <button role="tab" aria-selected="true" aria-controls="t-anat" id="b-anat">Anatomía</button>
+        <button role="tab" aria-selected="false" aria-controls="t-desc" id="b-desc" tabindex="-1">Descripción</button>
+        <button role="tab" aria-selected="false" aria-controls="t-lib" id="b-lib" tabindex="-1">Libertad</button>
+        <button role="tab" aria-selected="false" aria-controls="t-capa" id="b-capa" tabindex="-1">Qué capa</button>
+        <button role="tab" aria-selected="false" aria-controls="t-diag" id="b-diag" tabindex="-1">Diagnóstico</button>
+      </div>
     </div>
 
-    <div class="panels rv">
-      <!-- anatomía -->
+    <div class="panels card rv">
       <div class="panel" role="tabpanel" id="t-anat" aria-labelledby="b-anat">
         <div class="split">
           <div>
@@ -114,16 +111,16 @@
             <div class="tbl-wrap"><table class="tbl">
               <thead><tr><th>Nivel</th><th>Ruta</th><th>Alcance</th></tr></thead>
               <tbody>
-                <tr><td>Personal</td><td><code>~/.claude/skills/&lt;nombre&gt;/</code></td><td>Todos tus proyectos</td></tr>
-                <tr><td>Proyecto</td><td><code>.claude/skills/&lt;nombre&gt;/</code></td><td>Ese repo, viaja con git</td></tr>
+                <tr><td>Personal</td><td><code>~/.claude/skills/</code></td><td>Todos tus proyectos</td></tr>
+                <tr><td>Proyecto</td><td><code>.claude/skills/</code></td><td>Ese repo, viaja con git</td></tr>
                 <tr><td>Plugin</td><td>empaquetada</td><td>Espacio de nombres propio</td></tr>
-                <tr><td>Administrada</td><td>configuración de la organización</td><td>Toda la empresa</td></tr>
+                <tr><td>Administrada</td><td>organización</td><td>Toda la empresa</td></tr>
               </tbody>
             </table></div>
-            <p class="note">La que usarás en equipo es la de <b>proyecto</b>: se versiona con el código y llega con el <code>git clone</code>.</p>
+            <p class="note" style="margin-top:14px">La que usarás en equipo es la de <b>proyecto</b>: se versiona con el código y llega con el <code>git clone</code>.</p>
           </div>
           <div class="code">
-            <div class="code-h"><span>mi-skill/SKILL.md</span><button class="copy" data-copy="anat" aria-label="Copiar ejemplo">Copiar</button></div>
+            <div class="code-h"><span>mi-skill/SKILL.md</span><button class="copy" type="button" data-copy="anat">Copiar</button></div>
 <pre id="anat"><span class="c-dim">---</span>
 <span class="c-k">name:</span> resumiendo-cambios
 <span class="c-k">description:</span> Resume los cambios sin commitear
@@ -144,29 +141,27 @@ quedaron desactualizadas.</pre>
         </div>
       </div>
 
-      <!-- descripción -->
       <div class="panel" role="tabpanel" id="t-desc" aria-labelledby="b-desc" hidden>
         <h3>El campo que decide todo</h3>
         <p>Es lo único que Claude ve para decidir si tu skill aplica. Si está mal, la skill no existe.</p>
         <div class="formula"><span>qué hace</span><em>+</em><span>cuándo usarla</span></div>
-        <div class="rules">
-          <div class="rule"><b>Tercera persona</b><p>Se inyecta en la indicación del sistema.</p><p class="ok">Analiza documentos y aplica el formato del equipo.</p><p class="bad">Te puedo ayudar con tus documentos.</p></div>
-          <div class="rule"><b>Caso principal al inicio</b><p>Si se recorta, se recorta por el final.</p></div>
-          <div class="rule"><b>Tus palabras, no las del manual</b><p class="ok">Úsala cuando el usuario mencione README, documentación o formato.</p><p class="bad">Úsala para la gestión documental del repositorio.</p></div>
-          <div class="rule"><b>Tope de 1,536 caracteres</b><p>Combinado con <code>when_to_use</code>. Se trunca por el final.</p></div>
+        <div class="grid-2">
+          <div class="tile"><b>Tercera persona</b><p>Se inyecta en la indicación del sistema.</p><p class="ok">Analiza documentos y aplica el formato del equipo.</p><p class="bad">Te puedo ayudar con tus documentos.</p></div>
+          <div class="tile"><b>Tus palabras, no las del manual</b><p class="ok">Úsala cuando el usuario mencione README, documentación o formato.</p><p class="bad">Úsala para la gestión documental del repositorio.</p></div>
+          <div class="tile"><b>Caso principal al inicio</b><p>Si se recorta, se recorta por el final.</p></div>
+          <div class="tile"><b>Tope de 1,536 caracteres</b><p>Combinado con <code>when_to_use</code>. Se trunca por el final.</p></div>
         </div>
         <h4>El nombre</h4>
         <p>Gerundio que describe la actividad, solo minúsculas, números y guiones, máximo 64 caracteres. <b>El nombre del directorio define el comando</b>, no el campo <code>name</code>.</p>
-        <div class="chips"><span class="chip ok">resumiendo-cambios</span><span class="chip ok">revisando-prs</span><span class="chip ok">generando-migraciones</span><span class="chip bad">helper</span><span class="chip bad">utils</span><span class="chip bad">mi-skill</span></div>
+        <div class="chips"><span class="chip ok">resumiendo-cambios</span><span class="chip ok">revisando-prs</span><span class="chip ok">generando-pruebas</span><span class="chip bad">helper</span><span class="chip bad">utils</span><span class="chip bad">mi-skill</span></div>
       </div>
 
-      <!-- libertad -->
       <div class="panel" role="tabpanel" id="t-lib" aria-labelledby="b-lib" hidden>
         <h3>La pregunta no es cuánto detalle poner. Es qué tan frágil es la tarea.</h3>
-        <div class="grados">
-          <div class="grado"><span class="lvl lvl-a">Alta</span><p class="q">Varios caminos sirven</p><p>Dirección general, en prosa.</p><p class="ex">Revisión de código, análisis de estructura</p></div>
-          <div class="grado"><span class="lvl lvl-m">Media</span><p class="q">Hay un patrón preferido</p><p>Plantilla o script con parámetros.</p><p class="ex">Mensajes de commit, reportes</p></div>
-          <div class="grado"><span class="lvl lvl-b">Baja</span><p class="q">La secuencia importa</p><p>Comando exacto, prohibido variarlo.</p><p class="ex">Migraciones, despliegues</p></div>
+        <div class="grid-3" style="margin:24px 0 8px">
+          <div class="tile"><span class="lvl lvl-a">Alta</span><p class="q">Varios caminos sirven</p><p>Dirección general, en prosa.</p><p>Revisión de código, análisis de estructura.</p></div>
+          <div class="tile"><span class="lvl lvl-m">Media</span><p class="q">Hay un patrón preferido</p><p>Plantilla o script con parámetros.</p><p>Mensajes de commit, reportes.</p></div>
+          <div class="tile"><span class="lvl lvl-b">Baja</span><p class="q">La secuencia importa</p><p>Comando exacto, prohibido variarlo.</p><p>Migraciones, despliegues.</p></div>
         </div>
         <h4>Revelación progresiva</h4>
         <div class="split">
@@ -183,27 +178,24 @@ quedaron desactualizadas.</pre>
         </div>
       </div>
 
-      <!-- capa -->
       <div class="panel" role="tabpanel" id="t-capa" aria-labelledby="b-capa" hidden>
         <h3>¿Hace falta siempre, a veces, o sin excepción?</h3>
         <div class="layers">
           <div class="layer"><code>CLAUDE.md</code><p>Hecho permanente del proyecto</p></div>
-          <div class="layer is-skill"><code>Skill</code><p>Procedimiento o material de referencia</p></div>
+          <div class="layer hl"><code>Skill</code><p>Procedimiento o material de referencia</p></div>
           <div class="layer"><code>Subagente</code><p>Tarea con contexto aislado y rol propio</p></div>
           <div class="layer"><code>Hook</code><p>Regla que debe cumplirse siempre</p></div>
           <div class="layer"><code>Servidor MCP</code><p>Acceso a un sistema externo</p></div>
         </div>
-        <div class="tie">
-          <div><p class="eyebrow sm">Desempate 1</p><p><b>CLAUDE.md o skill</b> → ¿hace falta en <em>cada</em> conversación, o solo en <em>algunas</em>?</p></div>
-          <div><p class="eyebrow sm">Desempate 2</p><p><b>Skill o hook</b> → ¿confío en que el modelo <em>decida</em> aplicarlo?</p></div>
+        <div class="grid-2 tie">
+          <div><p class="eyebrow" style="margin-bottom:8px">Desempate 1</p><p><b>CLAUDE.md o skill</b> → ¿hace falta en <em>cada</em> conversación, o solo en <em>algunas</em>?</p></div>
+          <div><p class="eyebrow" style="margin-bottom:8px">Desempate 2</p><p><b>Skill o hook</b> → ¿confío en que el modelo <em>decida</em> aplicarlo?</p></div>
         </div>
       </div>
 
-      <!-- diagnóstico -->
       <div class="panel" role="tabpanel" id="t-diag" aria-labelledby="b-diag" hidden>
         <h3>Si no se dispara sola, el problema casi nunca está en el cuerpo</h3>
-        <div class="tbl-wrap">
-        <table class="tbl">
+        <div class="tbl-wrap"><table class="tbl">
           <thead><tr><th>Síntoma</th><th>Causa más probable</th><th>Qué revisas</th></tr></thead>
           <tbody>
             <tr><td>No se activa nunca</td><td>Descripción sin tus palabras reales, o en 1ª/2ª persona</td><td><code>description</code></td></tr>
@@ -214,22 +206,20 @@ quedaron desactualizadas.</pre>
             <tr><td>A veces sí, a veces no</td><td>Referencias a dos niveles</td><td>Aplana a uno</td></tr>
             <tr><td>La invocación se aborta</td><td>Un comando <code>!</code> falló</td><td>Pruébalo a mano</td></tr>
           </tbody>
-        </table>
-        </div>
-        <div class="chips mono"><span class="chip">/skills</span><span class="chip">/doctor</span><span class="chip">/context</span><span class="chip">claude --debug</span></div>
+        </table></div>
+        <div class="chips"><span class="chip">/skills</span><span class="chip">/doctor</span><span class="chip">/context</span><span class="chip">claude --debug</span></div>
       </div>
     </div>
 
-    <!-- ciclo A/B -->
-    <div class="cycle rv">
-      <div class="cycle-h">
+    <div class="dark-card cycle rv">
+      <div>
         <p class="eyebrow">El método</p>
-        <h3>Así se escribe una skill de verdad: Claude A y Claude B</h3>
-        <p>Nadie escribe un buen <code>SKILL.md</code> de memoria y a la primera.</p>
+        <h3>Claude A resuelve. Claude B comprueba.</h3>
+        <p style="margin-top:12px">Nadie escribe un <code>SKILL.md</code> bueno de memoria y a la primera.</p>
       </div>
-      <ol class="cycle-steps">
+      <ol>
         <li><span class="who a">A</span><p>Resuelve la tarea con prompting normal. Fíjate en qué contexto tuviste que dar.</p></li>
-        <li><span class="who a">A</span><p>Pide <code>crea una skill que capture este patrón</code> y recorta lo que Claude ya sabe.</p></li>
+        <li><span class="who a">A</span><p>Pega el destilador y recorta lo que Claude ya sabe.</p></li>
         <li><span class="who b">B</span><p>Sesión nueva. Pide la tarea en lenguaje natural, <b>sin</b> escribir <code>/</code>.</p></li>
         <li><span class="who a">A</span><p>¿No se disparó? Corrige la <b>descripción</b>. ¿Hizo otra cosa? Corrige el <b>cuerpo</b>.</p></li>
       </ol>
@@ -237,64 +227,94 @@ quedaron desactualizadas.</pre>
   </div>
 </section>
 
-<!-- ── sesión ── -->
-<section class="sec alt" id="sesion">
-  <div class="wrap">
-    <header class="shead rv">
-      <p class="eyebrow">La sesión</p>
-      <h2>Tres horas, y el reloj manda</h2>
-      <p>54 minutos de exposición y 92 de teclado. Nadie escucha más de diez minutos seguidos sin escribir algo.</p>
+<!-- ═════ demos ═════ -->
+<section class="sec sec-alt" id="demos">
+  <div class="wrap rail-head rv">
+    <header class="shead">
+      <p class="eyebrow">Lo que viste en vivo</p>
+      <h2>Seis demos, en el orden de la transmisión</h2>
+      <p class="lead">Cada una trae la corrida completa, capturada paso a paso. Ábrela para repasarla sin volver a ver el video.</p>
     </header>
-    <ol class="agenda rv">
-      <li><time>9:00</time><div><b>Apertura</b><p>Se construye una skill en vivo, en menos de tres minutos, sin diapositivas.</p></div></li>
-      <li><time>9:12</time><div><b>Qué son las skills</b><p>Dónde viven, cómo se activan y por qué casi no cuestan contexto.</p></div></li>
-      <li class="core"><time>9:34</time><div><b>Tu primera skill</b><p>La construyes tú, sobre un caso que ya repites en tu trabajo.</p></div></li>
-      <li><time>10:12</time><div><b>Grados de libertad y multiarchivo</b><p>Cuánta libertad darle a Claude según qué tan frágil sea la tarea.</p></div></li>
-      <li class="brk"><time>10:40</time><div><b>Receso</b></div></li>
-      <li><time>10:50</time><div><b>Skills frente a las otras capas</b><p>Cuándo skill, cuándo CLAUDE.md, subagente, hook o servidor MCP.</p></div></li>
-      <li><time>11:12</time><div><b>Compartir y diagnosticar</b><p>Publicas la tuya, corres la de alguien más y arreglas una skill saboteada.</p></div></li>
-      <li><time>11:48</time><div><b>Cierre</b><p>Compromisos y siguiente paso.</p></div></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ── laboratorios ── -->
-<section class="sec" id="laboratorios">
-  <div class="wrap">
-    <header class="shead rv">
-      <p class="eyebrow">Material práctico</p>
-      <h2>Seis laboratorios, manos al teclado</h2>
-      <p>Cada hoja trae qué vas a lograr, los pasos, cuándo está terminado y qué hacer si algo falla. Sirven igual para repetirlos con tu equipo.</p>
-    </header>
-    <div class="labs">
-      <article class="lab rv"><span class="n">01</span><h3>Inventario de skills</h3><p>Qué skills existen ya en tu máquina y de dónde viene cada una.</p><p class="meta">8 min · individual</p></article>
-      <article class="lab rv featured"><span class="n">02</span><h3>Tu primera skill</h3><p>Una skill tuya, sobre un caso real, que se dispara sola sin escribir <code>/</code>.</p><p class="meta">20 min · en pareja · el central</p></article>
-      <article class="lab rv"><span class="n">03</span><h3>Partir la skill</h3><p>La misma skill en tres archivos, con el grado de libertad decidido a conciencia.</p><p class="meta">12 min · en pareja</p></article>
-      <article class="lab rv"><span class="n">04</span><h3>Qué capa usar</h3><p>Cinco casos reales, cinco capas. Dos no tienen respuesta única.</p><p class="meta">6 min · salas de 3 a 4</p></article>
-      <article class="lab rv"><span class="n">05</span><h3>Publicar y clonar</h3><p>Saca tu skill de tu máquina y corre la de alguien más sin explicación.</p><p class="meta">6 min · individual</p></article>
-      <article class="lab rv"><span class="n">06</span><h3>La skill saboteada</h3><p>Tres fallas escondidas: frontmatter, descripción y rutas. Encuéntralas.</p><p class="meta">9 min · en pareja</p></article>
+    <div class="rail-ctrl" data-rail="rail-demos">
+      <button class="prev" type="button" aria-label="Demo anterior"><svg viewBox="0 0 20 20"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg></button>
+      <button class="next" type="button" aria-label="Demo siguiente"><svg viewBox="0 0 20 20"><path d="M7.5 4.5 13 10l-5.5 5.5"/></svg></button>
     </div>
   </div>
+
+  <div class="rail" id="rail-demos" tabindex="0" aria-label="Demos del webinar, desliza para ver más">
+    <div class="rail-track">
+      <article class="demo card">
+        <div class="demo-top"><span class="demo-n">01</span><span class="demo-t">0:02</span></div>
+        <h3>La skill en tres minutos</h3>
+        <p>Una skill funcionando antes de saber qué es. La promesa se demuestra, no se enuncia.</p>
+        <blockquote>Todo eso estaba escrito en un archivo, una sola vez.</blockquote>
+        <button class="btn btn-soft btn-sm" type="button" data-run="R1" aria-haspopup="dialog">Leer la corrida</button>
+      </article>
+      <article class="demo card">
+        <div class="demo-top"><span class="demo-n">02</span><span class="demo-t">0:15</span></div>
+        <h3>Anatomía de un SKILL.md</h3>
+        <p>Descripción siempre en contexto, cuerpo solo al invocar. El concepto del que depende todo lo demás.</p>
+        <blockquote>La descripción siempre está en contexto. El cuerpo, no.</blockquote>
+        <button class="btn btn-soft btn-sm" type="button" data-run="D2" aria-haspopup="dialog">Ver el archivo</button>
+      </article>
+      <article class="demo card">
+        <div class="demo-top"><span class="demo-n">03</span><span class="demo-t">0:27</span></div>
+        <h3>La descripción, A/B en vivo</h3>
+        <p>La misma skill con dos descripciones. Una nunca se activa, la otra sí. Lo único que cambió fue el texto.</p>
+        <blockquote>Si no se dispara, el problema está en la descripción.</blockquote>
+        <button class="btn btn-soft btn-sm" type="button" data-run="R3" aria-haspopup="dialog">Leer la corrida</button>
+      </article>
+      <article class="demo card key">
+        <div class="demo-top"><span class="demo-n">04</span><span class="demo-t">0:47</span></div>
+        <h3>El destilador</h3>
+        <p>La que vas a usar mañana: convertir una conversación que ya funcionó en una skill reutilizable.</p>
+        <blockquote>Nadie escribe un SKILL.md bueno de memoria y a la primera.</blockquote>
+        <button class="btn btn-soft btn-sm" type="button" data-run="R4" aria-haspopup="dialog">Leer la corrida</button>
+      </article>
+      <article class="demo card">
+        <div class="demo-top"><span class="demo-n">05</span><span class="demo-t">1:05</span></div>
+        <h3>Multiarchivo y script</h3>
+        <p>Una skill que ejecuta código, y el patrón que evita la solicitud de permiso.</p>
+        <blockquote>Los scripts se ejecutan, no se leen.</blockquote>
+        <button class="btn btn-soft btn-sm" type="button" data-run="R5" aria-haspopup="dialog">Leer la corrida</button>
+      </article>
+      <article class="demo card">
+        <div class="demo-top"><span class="demo-n">06</span><span class="demo-t">1:12</span></div>
+        <h3>La skill que no funciona</h3>
+        <p>Diagnóstico de una skill saboteada. Las fallas más caras son las que ninguna herramienta señala.</p>
+        <blockquote>Las descripciones malas no las marca ninguna herramienta.</blockquote>
+        <button class="btn btn-soft btn-sm" type="button" data-run="R6" aria-haspopup="dialog">Leer la corrida</button>
+      </article>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <a class="more card pressable rv" href="webinar/">
+      <span class="more-ic" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M6 3.5h9l5 5V22a.5.5 0 0 1-.5.5h-13.5a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5Z"/><path d="M14.5 3.5v5h5M9.5 13h7M9.5 17h7"/></svg></span>
+      <div><h3>Detrás del webinar</h3><p>El guion de las demos, el playbook, el banco de preguntas y el ambiente para reproducir todo en tu máquina.</p></div>
+      <span class="chev" aria-hidden="true">›</span>
+    </a>
+  </div>
 </section>
 
-<!-- ── destilador ── -->
+<!-- ═════ destilador ═════ -->
 <section class="sec" id="destilador">
-  <div class="wrap">
-    <div class="distill rv">
-      <div>
-        <p class="eyebrow">El componente que más vas a usar</p>
-        <h2>El prompt destilador</h2>
-        <p>Cada vez que resuelvas algo con Claude y pienses «esto lo voy a volver a necesitar», pégalo en esa misma conversación. Ya contiene todo lo que la skill necesita: el contexto que diste, las correcciones que hiciste y el resultado que aceptaste.</p>
-        <ul class="ticks">
-          <li>Terminaste una tarea y el resultado te sirvió</li>
-          <li>Tuviste que corregir a Claude dos o tres veces</li>
-          <li>Diste contexto que vas a tener que volver a dar</li>
-        </ul>
-        <p class="note">La versión completa, con el análisis de seis preguntas y la variante para equipo, viene en el material para llevarte.</p>
-      </div>
-      <div class="code">
-        <div class="code-h"><span>Variante corta · pégala al final de la conversación</span><button class="copy" data-copy="destilar" aria-label="Copiar prompt destilador">Copiar</button></div>
-<pre id="destilar">Destila esta conversación en un SKILL.md de Claude Code.
+  <div class="wrap distill">
+    <div class="rv">
+      <p class="eyebrow">El componente que más vas a usar</p>
+      <h2>El prompt destilador</h2>
+      <p class="lead">Cuando resuelvas algo con Claude y pienses «esto lo voy a volver a necesitar», pégalo en esa misma conversación.</p>
+      <p>La conversación ya contiene todo lo que la skill necesita: el contexto que diste, las correcciones que hiciste y el resultado que aceptaste.</p>
+      <ul class="ticks">
+        <li>Terminaste una tarea y el resultado te sirvió</li>
+        <li>Tuviste que corregir a Claude dos o tres veces</li>
+        <li>Diste contexto que vas a tener que volver a dar</li>
+      </ul>
+      <p class="note">La versión completa, con el análisis de seis preguntas y la variante para equipo, viene en el material para llevarte y como skill <code>destilando-conversacion</code> en el kit.</p>
+    </div>
+    <div class="code rv">
+      <div class="code-h"><span>Variante corta · pégala al final de la conversación</span><button class="copy" type="button" data-copy="destilar">Copiar</button></div>
+<pre id="destilar" class="wrapp">Destila esta conversación en un SKILL.md de Claude Code.
 
 Nombre en gerundio. Descripción en tercera persona con la fórmula
 [qué hace] + "Úsala cuando..." usando las palabras que yo usé de verdad
@@ -303,95 +323,87 @@ contexto que tuve que darte y que no sabías; quita todo lo que ya sabías.
 Menos de 60 líneas. Termina con un comentario del grado de libertad.
 
 Dame el archivo y el mkdir. Nada más.</pre>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ── descargas ── -->
-<section class="sec alt" id="descargas">
+<!-- ═════ descargas ═════ -->
+<section class="sec sec-alt" id="descargas">
   <div class="wrap">
     <header class="shead rv">
       <p class="eyebrow">Descargas</p>
       <h2>Dos paquetes para llevarte</h2>
-      <p>Lo que se lee de corrido va en PDF. Lo que se copia, se pega o se instala se queda en markdown, su formato nativo. Todo descarga directo, sin salir de esta página.</p>
+      <p class="lead">Lo que se lee va en PDF. Lo que se copia, se pega o se instala se queda en markdown. Todo descarga aquí mismo, sin salir de la página.</p>
     </header>
 
     <div class="packs">
-      <article class="pack rv" id="paquete-material">
-        <div class="pack-h">
-          <span class="pack-n">Paquete 1</span>
-          <h3>Material para llevarte</h3>
-          <p>Para leer, imprimir y consultar. Cinco archivos.</p>
-          <a class="btn btn-red btn-lg dl" href="descargas/material-para-llevar.zip" data-id="material" download>
-            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-            <span>Descargar paquete</span><small data-peso="material">ZIP</small>
-          </a>
-        </div>
+      <article class="pack card rv" id="paquete-material">
+        <span class="pack-n">Paquete 1</span>
+        <h3>Material para llevarte</h3>
+        <p>Para leer, imprimir y consultar.</p>
+        <a class="btn btn-red btn-lg dl" href="descargas/material-para-llevar.zip" data-id="material" download>
+          <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+          <span>Descargar paquete</span><small data-peso="material">ZIP</small>
+        </a>
         <ul class="files" id="lista-material"></ul>
       </article>
 
-      <article class="pack pack-dark rv" id="paquete-kit">
-        <div class="pack-h">
-          <span class="pack-n">Paquete 2</span>
-          <h3>Kit del asistente</h3>
-          <p>Trece skills funcionando, tres plantillas, el destilador, las fuentes editables y todo el material navegable en un solo HTML.</p>
-          <a class="btn btn-light btn-lg dl" href="descargas/kit-asistente-skills-claude-code.zip" data-id="kit" download>
-            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-            <span>Descargar kit</span><small data-peso="kit">ZIP</small>
-          </a>
-        </div>
+      <article class="pack dark-card rv" id="paquete-kit">
+        <span class="pack-n">Paquete 2</span>
+        <h3>Kit del asistente</h3>
+        <p>Trece skills funcionando, tres plantillas, el destilador, las fuentes editables y todo navegable en un solo HTML.</p>
+        <a class="btn btn-white btn-lg dl" href="descargas/kit-asistente-skills-claude-code.zip" data-id="kit" download>
+          <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+          <span>Descargar kit</span><small data-peso="kit">ZIP</small>
+        </a>
 <pre class="tree tree-dark">kit/
 ├── 00-EMPIEZA-AQUI.md
 ├── 03-PROMPT-DESTILADOR.md
-├── KIT-COMPLETO.html      <span class="c-dim">← todo navegable, sin conexión</span>
-├── PDF/                   <span class="c-dim">← manual, tarjeta, 30 días</span>
-├── kit-skills/            <span class="c-dim">← 13 skills en 4 dominios</span>
-├── 04-PLANTILLAS/         <span class="c-dim">← mínima, multiarchivo, baja libertad</span>
-└── fuente-editable/       <span class="c-dim">← markdown de los PDF</span></pre>
+├── KIT-COMPLETO.html   <span class="c-dim">← todo, sin conexión</span>
+├── PDF/                <span class="c-dim">← manual, tarjeta, 30 días</span>
+├── kit-skills/         <span class="c-dim">← 13 skills, 4 dominios</span>
+├── 04-PLANTILLAS/      <span class="c-dim">← tres puntos de partida</span>
+└── fuente-editable/    <span class="c-dim">← markdown de los PDF</span></pre>
       </article>
     </div>
 
-    <div class="group rv">
-      <div class="group-h"><h3>Las trece skills del kit</h3><p>Léelas antes de escribir las tuyas: muestran las decisiones, no solo las reglas.</p></div>
-      <div class="cats" id="lista-kit"></div>
-    </div>
+    <div class="cats" id="lista-kit"></div>
 
     <div class="install rv">
       <div class="code">
-        <div class="code-h"><span>Una categoría completa</span><button class="copy" data-copy="i-cat" aria-label="Copiar">Copiar</button></div>
+        <div class="code-h"><span>Una categoría completa</span><button class="copy" type="button" data-copy="i-cat">Copiar</button></div>
 <pre id="i-cat">cp -r kit-skills/calidad-documental/* ~/.claude/skills/</pre>
       </div>
       <div class="code">
-        <div class="code-h"><span>Para todo un equipo, en un repositorio</span><button class="copy" data-copy="i-team" aria-label="Copiar">Copiar</button></div>
+        <div class="code-h"><span>Para todo un equipo, en un repositorio</span><button class="copy" type="button" data-copy="i-team">Copiar</button></div>
 <pre id="i-team">mkdir -p .claude/skills
 cp -r kit-skills/desarrollo/* .claude/skills/
-git add .claude/skills && git commit -m "add: kit de skills de desarrollo"</pre>
+git add .claude/skills && git commit -m "add: kit de skills"</pre>
       </div>
     </div>
-    <p class="note center-t">Verifica en Claude Code con <code>/skills</code>. Deben aparecer.</p>
+    <p class="note center" style="margin-top:18px">Toca cualquier skill para leerla completa. Verifica la instalación en Claude Code con <code>/skills</code>.</p>
   </div>
 </section>
 
-<!-- ── en tu empresa ── -->
-<section class="sec" id="empresa">
+<!-- ═════ 30 días ═════ -->
+<section class="sec" id="treinta">
   <div class="wrap">
     <header class="shead rv">
       <p class="eyebrow">Tus primeros 30 días</p>
       <h2>Para que esto no se quede en el webinar</h2>
-      <p>La mayoría de quienes ven un webinar no aplican nada. No es falta de interés: es que no hay un siguiente paso concreto. Este es el siguiente paso.</p>
+      <p class="lead">La mayoría de quienes ven un webinar no aplican nada. No es falta de interés: es que no hay un siguiente paso concreto. Este es.</p>
     </header>
 
     <ol class="road rv">
-      <li><span class="wk">Día 1 · 20 min</span><h3>Instala y observa</h3><p>Copia <code>redactando-commits</code>, pide un mensaje de commit y fíjate en que no escribiste <code>/</code>. Anota tu caso y destílalo.</p></li>
-      <li><span class="wk">Semana 1</span><h3>Úsala, no la mejores</h3><p>Tres usos reales mínimo. Una línea cada vez que tropiece. Sin datos de uso, las mejoras son suposiciones.</p></li>
-      <li><span class="wk">Semana 2</span><h3>Una corrección y una más</h3><p>Corrige una sola cosa con el ciclo. Construye la segunda en otra categoría: sale en la mitad del tiempo.</p></li>
-      <li><span class="wk">Semana 3</span><h3>Llévala al equipo</h3><p>La que más usaste, limpia con la variante para equipo del destilador. Súbela y pide una prueba sin explicar nada.</p></li>
-      <li><span class="wk">Semana 4</span><h3>Mide y decide</h3><p>¿Cuántas en uso real? ¿Cuál no se invocó en dos semanas? ¿Alguien más las usa? Corre <code>auditando-skills</code>.</p></li>
+      <li class="card"><span class="wk">Día 1 · 20 min</span><h3>Instala y observa</h3><p>Copia <code>redactando-commits</code>, pide un mensaje de commit y fíjate en que no escribiste <code>/</code>.</p></li>
+      <li class="card"><span class="wk">Semana 1</span><h3>Úsala, no la mejores</h3><p>Tres usos reales. Una línea cada vez que tropiece. Sin datos de uso, las mejoras son suposiciones.</p></li>
+      <li class="card"><span class="wk">Semana 2</span><h3>Una corrección y una más</h3><p>Corrige una sola cosa. Construye la segunda en otra categoría: sale en la mitad del tiempo.</p></li>
+      <li class="card"><span class="wk">Semana 3</span><h3>Llévala al equipo</h3><p>Límpiala con la variante para equipo del destilador. Pide una prueba sin explicar nada.</p></li>
+      <li class="card"><span class="wk">Semana 4</span><h3>Mide y decide</h3><p>¿Cuántas en uso real? ¿Cuál no se invocó en dos semanas? Corre <code>auditando-skills</code>.</p></li>
     </ol>
 
     <div class="split tight">
-      <div class="checklist rv">
+      <div class="checklist card rv">
         <div class="checklist-h">
           <h3>Antes de dar una skill por terminada</h3>
           <span class="prog" aria-live="polite"><b id="chk-n">0</b>/9</span>
@@ -408,11 +420,11 @@ git add .claude/skills && git commit -m "add: kit de skills de desarrollo"</pre>
           <li><label><input type="checkbox"><span>Versionada en el repositorio</span></label></li>
           <li><label><input type="checkbox"><span>Otra persona la ejecutó sin explicación previa</span></label></li>
         </ul>
-        <p class="note">Se guarda en tu navegador. Úsala para cada skill nueva.</p>
+        <p class="note" style="margin:10px 0 0">Se guarda en tu navegador. Úsala para cada skill nueva.</p>
       </div>
 
-      <div class="rv">
-        <div class="levels errors">
+      <div class="stack">
+        <div class="numbered card rv">
           <h3>Los tres errores que hacen que esto se abandone</h3>
           <ol>
             <li><b>Empezar por la skill perfecta</b><span>La primera debe ser fea y útil. La perfecta nunca se termina.</span></li>
@@ -420,55 +432,52 @@ git add .claude/skills && git commit -m "add: kit de skills de desarrollo"</pre>
             <li><b>Mejorarla sin usarla</b><span>Las mejoras que se te ocurren en abstracto casi nunca son las que el uso revela.</span></li>
           </ol>
         </div>
-        <div class="levels">
+        <div class="numbered navy card rv">
           <h3>Semana 4 · qué hacer con cada respuesta</h3>
-          <div class="tbl-wrap"><table class="tbl">
-            <tbody>
-              <tr><td>Tienes 1 en uso</td><td>Suficiente. Es más de lo que tiene la mayoría</td></tr>
-              <tr><td>Tienes 3 o más</td><td>Revisa si alguna se solapa con otra</td></tr>
-              <tr><td>Una no se usó en 2 semanas</td><td>Bórrala. Una skill que miente es peor que ninguna</td></tr>
-              <tr><td>Nadie más las usa</td><td>Pregunta por qué. Suele ser que no saben que existen</td></tr>
-            </tbody>
-          </table></div>
+          <ol>
+            <li><b>Tienes 1 en uso</b><span>Suficiente. Es más de lo que tiene la mayoría.</span></li>
+            <li><b>Tienes 3 o más</b><span>Revisa si alguna se solapa con otra.</span></li>
+            <li><b>Una no se usó en 2 semanas</b><span>Bórrala. Una skill que miente es peor que ninguna.</span></li>
+            <li><b>Nadie más las usa</b><span>Pregunta por qué. Suele ser que no saben que existen.</span></li>
+          </ol>
         </div>
-        <p class="note warn">Antes de ejecutar una skill que no escribiste, lee su <code>allowed-tools</code>. Preaprueba, no restringe.</p>
+        <p class="note warn rv">Antes de ejecutar una skill que no escribiste, lee su <code>allowed-tools</code>. Preaprueba, no restringe.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── frases ── -->
+<!-- ═════ frases ═════ -->
 <section class="sec quotes" id="frases">
   <div class="wrap">
     <header class="shead rv">
-      <p class="eyebrow on-dark">Para llevarte</p>
-      <h2>Las siete frases del taller</h2>
+      <p class="eyebrow">Para llevarte</p>
+      <h2>Seis frases, una por demo</h2>
     </header>
     <ol class="q-list rv">
-      <li>La descripción está siempre en contexto. El cuerpo, no. Ese es todo el truco.</li>
-      <li>Si la skill no se dispara sola, el problema casi nunca está en el cuerpo. Está en la descripción.</li>
-      <li>La pregunta no es cuánto detalle poner. Es qué tan frágil es la tarea.</li>
-      <li>La pregunta no es qué herramienta usar. Es si esto hace falta siempre, a veces, o sin excepción.</li>
-      <li>Una skill que solo funciona en tu máquina es una nota personal. En el repo es infraestructura.</li>
-      <li>Las fallas de sintaxis las encuentra el validador. Las descripciones malas solo las encuentra el uso.</li>
-      <li>Solo agrega lo que Claude no sabe ya.</li>
+      <li>Todo eso estaba escrito en un archivo, una sola vez.</li>
+      <li>La descripción siempre está en contexto. El cuerpo, no.</li>
+      <li>Si no se dispara, el problema está en la descripción.</li>
+      <li>Nadie escribe un SKILL.md bueno de memoria y a la primera.</li>
+      <li>Los scripts se ejecutan, no se leen.</li>
+      <li>Las descripciones malas no las marca ninguna herramienta.</li>
     </ol>
   </div>
 </section>
 
-<!-- ── documentación ── -->
+<!-- ═════ documentación ═════ -->
 <section class="sec" id="recursos">
   <div class="wrap">
     <header class="shead rv">
       <p class="eyebrow">Documentación oficial</p>
       <h2>Claude Code cambia rápido</h2>
-      <p>Verifica contra estas fuentes, sobre todo los campos del frontmatter y los comandos de diagnóstico.</p>
+      <p class="lead">Antes de una decisión importante, verifica contra la fuente: sobre todo los campos del frontmatter y los comandos de diagnóstico.</p>
     </header>
     <div class="docs rv">
-      <a href="https://platform.claude.com/docs/es/agents-and-tools/agent-skills/best-practices" target="_blank" rel="noopener"><b>Mejores prácticas para la creación de Skills</b><span>platform.claude.com</span></a>
-      <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener"><b>Extend Claude with skills</b><span>code.claude.com</span></a>
-      <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener"><b>Agent Skills overview</b><span>platform.claude.com</span></a>
-      <a href="https://agentskills.io" target="_blank" rel="noopener"><b>Estándar abierto Agent Skills</b><span>agentskills.io</span></a>
+      <a class="card pressable" href="https://platform.claude.com/docs/es/agents-and-tools/agent-skills/best-practices" target="_blank" rel="noopener"><b>Mejores prácticas para la creación de Skills</b><span>platform.claude.com</span></a>
+      <a class="card pressable" href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener"><b>Extend Claude with skills</b><span>code.claude.com</span></a>
+      <a class="card pressable" href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener"><b>Agent Skills overview</b><span>platform.claude.com</span></a>
+      <a class="card pressable" href="https://agentskills.io" target="_blank" rel="noopener"><b>Estándar abierto Agent Skills</b><span>agentskills.io</span></a>
     </div>
   </div>
 </section>
@@ -481,7 +490,11 @@ git add .claude/skills && git commit -m "add: kit de skills de desarrollo"</pre>
       <span class="brand"><span class="o">Omni</span><span class="s">Sys</span></span>
       <span class="foot-t">Innovación y Preventa</span>
     </div>
-    <p>Taller impartido por Erick Vázquez Granados · 30 de septiembre de 2026</p>
+    <nav aria-label="Pie">
+      <a href="#descargas">Descargas</a>
+      <a href="webinar/">Detrás del webinar</a>
+      <span>Erick Vázquez Granados · 30 de septiembre de 2026</span>
+    </nav>
   </div>
 </footer>
 

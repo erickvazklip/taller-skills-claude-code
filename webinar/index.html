@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0D1A45">
+<title>Detrás del webinar · Skills con Claude Code · OmniSys</title>
+<meta name="description" content="La documentación con la que se transmitió el webinar Skills con Claude Code: guion de las seis demos, corridas capturadas, playbook, banco de preguntas y el ambiente para reproducirlo.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1A45'/%3E%3Ctext x='32' y='43' font-family='Verdana' font-weight='700' font-size='30' fill='%23FF3A41' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/estilos.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body data-base="../">
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="nav on-dark" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="../" aria-label="OmniSys, volver al inicio"><span class="o">Omni</span><span class="s">Sys</span></a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="../">Inicio</a>
+      <a href="#reproducir">Reprodúcelo</a>
+      <a href="#demos">Las demos</a>
+      <a href="#formato">El formato</a>
+      <a href="#documentos">Documentos</a>
+    </nav>
+    <a class="btn btn-sm btn-red dl" href="descargas/documentacion-webinar.zip" download>
+      <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+      <span>Todo</span>
+    </a>
+  </div>
+</header>
+
+<main id="contenido">
+
+<section class="hero" id="inicio">
+  <div class="wrap hero-in">
+    <p class="kicker rise"><i></i>Documentación del webinar</p>
+    <h1 class="rise d1">Detrás del <span class="g">webinar</span></h1>
+    <p class="claim rise d2">Todo con lo que se transmitió, para que lo repases o lo repliques.</p>
+    <p class="lede rise d2">El guion de las seis demos, las corridas capturadas paso a paso, el playbook de 90 minutos, el banco de preguntas y un ambiente que deja tu máquina en el mismo estado que la de la transmisión.</p>
+    <div class="hero-cta rise d3">
+      <a class="btn btn-red btn-lg dl" href="descargas/documentacion-webinar.zip" download>
+        <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+        <span>Documentación completa</span><small>ZIP · 3 MB</small>
+      </a>
+      <a class="btn btn-glass btn-lg" href="#reproducir">Reproducir las demos</a>
+    </div>
+
+    <div class="checkpoint rise">
+      <span class="cp-t">0:47</span>
+      <div>
+        <p class="cp-l">El único reloj de la transmisión</p>
+        <p class="cp-d">Si a esa hora no había empezado la <b>demo 4, el destilador</b>, íbamos tarde. Cualquier ajuste salía de recortar las demos 5 y 6, nunca la 4.</p>
+      </div>
+    </div>
+
+    <dl class="facts rise">
+      <div><dt>Duración</dt><dd>90 min</dd></div>
+      <div><dt>Exposición</dt><dd>38 min</dd></div>
+      <div><dt>En pantalla</dt><dd>52 min</dd></div>
+      <div><dt>Corridas</dt><dd>6</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ═════ reproducir ═════ -->
+<section class="sec" id="reproducir">
+  <div class="wrap">
+    <header class="shead rv">
+      <p class="eyebrow">Reprodúcelo en tu máquina</p>
+      <h2>Tres scripts y un repositorio sembrado</h2>
+      <p class="lead">El mismo ambiente de la transmisión: un calculador de facturas con cuatro problemas sembrados a propósito, las skills de las demos y la skill saboteada. Requiere Claude Code 2.1.233 o más nueva.</p>
+    </header>
+    <div class="split">
+      <div class="card rv" style="padding:clamp(22px,3vw,32px)">
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Script</th><th>Qué hace</th><th>Cuándo</th></tr></thead>
+          <tbody>
+            <tr><td><code>preparar.sh</code></td><td>Crea <code>~/demo-webinar</code>, lo inicializa en git e instala las dos skills permanentes</td><td>Una vez</td></tr>
+            <tr><td><code>verificar.sh</code></td><td>Revisa versión, sesión, skills, diff y permisos, y dice exactamente qué falta</td><td>Antes de empezar</td></tr>
+            <tr><td><code>resetear.sh</code></td><td>Devuelve todo al estado inicial y borra las skills creadas durante la práctica</td><td>Entre demos</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note" style="margin:16px 0 0"><code>NOTAS-DEL-ESTADO.md</code> explica los cuatro problemas sembrados en el código y por qué está cada uno.</p>
+      </div>
+      <div class="rv">
+        <div class="code">
+          <div class="code-h"><span>Primera vez</span><button class="copy" type="button" data-copy="setup">Copiar</button></div>
+<pre id="setup">unzip ambiente-demo.zip
+bash ambiente-demo/preparar.sh
+bash ambiente-demo/verificar.sh</pre>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-ink dl" href="descargas/ambiente-demo.zip" download>
+            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+            <span>Descargar ambiente</span><small>ZIP · 11 KB</small>
+          </a>
+          <a class="btn btn-soft dl" href="descargas/03-Guion-de-demostraciones.pdf" download>
+            <svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
+            <span>Guion de las demos</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ demos ═════ -->
+<section class="sec sec-alt" id="demos">
+  <div class="wrap">
+    <header class="shead rv">
+      <p class="eyebrow">Las seis demos</p>
+      <h2>Primer comando, objetivo y la corrida completa</h2>
+      <p class="lead">Cada corrida está capturada tal como salió. Ábrela aquí mismo y léela a tu ritmo.</p>
+    </header>
+    <ol class="dlist">
+      <li class="drow card rv"><div class="num">01<small>0:02</small></div><div><h3>La skill en tres minutos</h3><p>Que veas una skill funcionando antes de saber qué es.</p><code>git diff HEAD</code></div><button class="btn btn-soft btn-sm" type="button" data-run="R1" aria-haspopup="dialog">Leer la corrida</button></li>
+      <li class="drow card rv"><div class="num">02<small>0:15</small></div><div><h3>Anatomía de un SKILL.md</h3><p>Descripción siempre en contexto, cuerpo solo al invocar.</p><code>cat ~/.claude/skills/revisando-cambios/SKILL.md</code></div><button class="btn btn-soft btn-sm" type="button" data-run="D2" aria-haspopup="dialog">Ver el archivo</button></li>
+      <li class="drow card rv"><div class="num">03<small>0:27</small></div><div><h3>La descripción, A/B en vivo</h3><p>La descripción es lo único que decide si una skill existe en la práctica.</p><code>mkdir -p ~/.claude/skills/ayudante-docs</code></div><button class="btn btn-soft btn-sm" type="button" data-run="R3" aria-haspopup="dialog">Leer la corrida</button></li>
+      <li class="drow card key rv"><div class="num">04<small>0:47</small></div><div><h3>El destilador</h3><p>Convertir una conversación que ya funcionó en una skill. La demo más valiosa.</p><code>claude</code></div><button class="btn btn-soft btn-sm" type="button" data-run="R4" aria-haspopup="dialog">Leer la corrida</button></li>
+      <li class="drow card rv"><div class="num">05<small>1:05</small></div><div><h3>Multiarchivo y script</h3><p>Una skill que ejecuta código, y el patrón que evita la solicitud de permiso.</p><code>find ~/.claude/skills/revisando-readme</code></div><button class="btn btn-soft btn-sm" type="button" data-run="R5" aria-haspopup="dialog">Leer la corrida</button></li>
+      <li class="drow card rv"><div class="num">06<small>1:12</small></div><div><h3>La skill que no funciona</h3><p>Diagnóstico de una skill saboteada. Las fallas caras no las marca ninguna herramienta.</p><code>cat ~/.claude/skills/doc-helper/SKILL.md</code></div><button class="btn btn-soft btn-sm" type="button" data-run="R6" aria-haspopup="dialog">Leer la corrida</button></li>
+    </ol>
+    <div class="center rv" style="margin-top:28px">
+      <button class="btn btn-soft" type="button" data-run="R0" aria-haspopup="dialog">Ver la versión de 90 minutos sin ambiente (R0)</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ formato ═════ -->
+<section class="sec" id="formato">
+  <div class="wrap">
+    <header class="shead rv">
+      <p class="eyebrow">El formato</p>
+      <h2>Tres personas, un reloj y un plan B para cada demo</h2>
+      <p class="lead">Si quieres replicar el webinar dentro de tu empresa, así se organizó.</p>
+    </header>
+
+    <div class="roles">
+      <article class="role card rv">
+        <span class="pack-n">38 minutos</span>
+        <h3>Expositor</h3>
+        <p>Lleva la exposición y entrega la pantalla en cada demo.</p>
+        <ol class="reading">
+          <li><a class="dl" href="descargas/04-Playbook-del-webinar.pdf" download><b>Playbook del webinar</b><span>Minuto a minuto, señales de entrega y el reparto de los tres.</span></a></li>
+          <li><a class="dl" href="descargas/06-Banco-de-preguntas.pdf" download><b>Banco de preguntas</b><span>Respuestas preparadas y quién contesta cada tipo.</span></a></li>
+        </ol>
+      </article>
+      <article class="role card rv">
+        <span class="pack-n">52 minutos</span>
+        <h3>Demostrador</h3>
+        <p>Lleva las seis demos en pantalla compartida.</p>
+        <ol class="reading">
+          <li><a class="dl" href="descargas/01-Carpeta-de-traspaso.pdf" download><b>Carpeta de traspaso</b><span>Qué se pide, el calendario y el criterio del ensayo.</span></a></li>
+          <li><a class="dl" href="descargas/02-Guia-del-demostrador.pdf" download><b>Guía del demostrador</b><span>Los conceptos para narrar con seguridad.</span></a></li>
+          <li><a class="dl" href="descargas/03-Guion-de-demostraciones.pdf" download><b>Guion de demostraciones</b><span>Paso a paso, con texto hablado y qué hacer si falla.</span></a></li>
+          <li><a class="dl" href="descargas/05-Tarjeta-de-cabina.pdf" download><b>Tarjeta de cabina</b><span>Una página, impresa junto al monitor.</span></a></li>
+        </ol>
+      </article>
+      <article class="role card rv">
+        <span class="pack-n">Todo el tiempo</span>
+        <h3>Moderador</h3>
+        <p>Filtra el chat, pasa las preguntas más repetidas y anuncia pausas si algo se cae.</p>
+        <ol class="reading">
+          <li><a class="dl" href="descargas/06-Banco-de-preguntas.pdf" download><b>Banco de preguntas</b><span>Con el reparto de quién responde qué.</span></a></li>
+          <li><a class="dl" href="descargas/00-EMPIEZA-AQUI.md" download><b>Empieza aquí</b><span>El índice del paquete y el orden de lectura.</span></a></li>
+        </ol>
+      </article>
+    </div>
+
+    <div class="dark-card accept rv">
+      <div>
+        <p class="eyebrow">Criterio del ensayo general</p>
+        <h3>Pasa si se cumplen las cuatro</h3>
+      </div>
+      <ol>
+        <li>La demo 4 arranca antes del minuto 50</li>
+        <li>Las seis frases de cierre se dicen completas</li>
+        <li>Pasar a un respaldo toma menos de 30 segundos</li>
+        <li>Nadie agradece un cambio de turno</li>
+      </ol>
+    </div>
+
+    <div class="split tight">
+      <div class="numbered card rv">
+        <h3>Tres frases de emergencia</h3>
+        <ol>
+          <li><b>Me perdí</b><span>«Erick, ¿le seguimos con el mecanismo?»</span></li>
+          <li><b>Algo falló y paso a respaldo</b><span>«Esto lo corrí ayer y lo tengo capturado. Lo leemos, que para este punto sirve igual.»</span></li>
+          <li><b>No sé la respuesta</b><span>«No lo sé de memoria y prefiero no inventarlo. Lo anoto y va en el correo de seguimiento.»</span></li>
+        </ol>
+      </div>
+      <div class="stack rv">
+        <div class="code">
+          <div class="code-h"><span>Antes de abrir el micrófono</span><button class="copy" type="button" data-copy="pre-mic">Copiar</button></div>
+<pre id="pre-mic">bash ambiente-demo/resetear.sh
+bash ambiente-demo/verificar.sh</pre>
+        </div>
+        <ul class="ticks">
+          <li>Terminal a 18 pt, tema claro, 70% del ancho</li>
+          <li>No molestar activado; correo y mensajería cerrados</li>
+          <li>Seis respaldos abiertos en pestañas del navegador</li>
+          <li>Guion en la segunda pantalla</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ respaldos ═════ -->
+<section class="sec sec-alt" id="respaldos">
+  <div class="wrap">
+    <header class="shead rv">
+      <p class="eyebrow">Respaldos</p>
+      <h2>Una corrida capturada por cada demo</h2>
+      <p class="lead">Si una demo falla en vivo, se pasa a su respaldo sin anunciarlo. Para ti son la mejor forma de repasar: se pueden leer con calma.</p>
+    </header>
+    <div class="backups rv">
+      <button class="bk bk-main card pressable" type="button" data-run="R0" aria-haspopup="dialog"><code>R0</code><b>Sin ambiente</b><p>Último recurso: los 90 minutos completos sin una sola terminal.</p><span class="open">Leer</span></button>
+      <button class="bk card pressable" type="button" data-run="R1" aria-haspopup="dialog"><code>R1</code><b>Apertura</b><p>Sustituye a la demo 1.</p><span class="open">Leer</span></button>
+      <button class="bk card pressable" type="button" data-run="R3" aria-haspopup="dialog"><code>R3</code><b>Descripción</b><p>Demo 3, con la variante narrada.</p><span class="open">Leer</span></button>
+      <button class="bk card pressable" type="button" data-run="R4" aria-haspopup="dialog"><code>R4</code><b>Destilador</b><p>Sustituye a la demo 4.</p><span class="open">Leer</span></button>
+      <button class="bk card pressable" type="button" data-run="R5" aria-haspopup="dialog"><code>R5</code><b>Multiarchivo</b><p>Sustituye a la demo 5.</p><span class="open">Leer</span></button>
+      <button class="bk card pressable" type="button" data-run="R6" aria-haspopup="dialog"><code>R6</code><b>Diagnóstico</b><p>Sustituye a la demo 6.</p><span class="open">Leer</span></button>
+    </div>
+    <p class="note center" style="margin-top:18px">La demo 2 no necesita respaldo: es la lectura de un archivo.</p>
+  </div>
+</section>
+
+<!-- ═════ documentos ═════ -->
+<section class="sec" id="documentos">
+  <div class="wrap">
+    <header class="shead rv">
+      <p class="eyebrow">Documentos</p>
+      <h2>Todo, archivo por archivo</h2>
+    </header>
+    <div class="card rv" style="padding:clamp(14px,2.5vw,24px) clamp(22px,3vw,32px)">
+      <ul class="files">
+        <li class="file"><div class="ficon pdf">PDF</div><div><h4>01 · Carpeta de traspaso</h4><p>Reparto, calendario de ensayos, señales de entrega y los dos modelos de operar.</p><div class="sz">8 páginas · 392 KB</div></div><a class="btn btn-soft btn-sm dl" href="descargas/01-Carpeta-de-traspaso.pdf" download><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg><span>Descargar</span></a></li>
+        <li class="file"><div class="ficon pdf">PDF</div><div><h4>02 · Guía del demostrador</h4><p>Los conceptos que hacen falta para narrar las demos.</p><div class="sz">437 KB</div></div><a class="btn btn-soft btn-sm dl" href="descargas/02-Guia-del-demostrador.pdf" download><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg><span>Descargar</span></a></li>
+        <li class="file"><div class="ficon pdf">PDF</div><div><h4>03 · Guion de demostraciones</h4><p>Las seis demos con comandos exactos, texto hablado y qué hacer si cada una falla.</p><div class="sz">1.6 MB</div></div><a class="btn btn-soft btn-sm dl" href="descargas/03-Guion-de-demostraciones.pdf" download><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg><span>Descargar</span></a></li>
+        <li class="file"><div class="ficon pdf">PDF</div><div><h4>04 · Playbook del webinar</h4><p>El minuto a minuto de los 90 minutos y el reparto entre los tres.</p><div class="sz">964 KB</div></div><a class="btn btn-soft btn-sm dl" href="descargas/04-Playbook-del-webinar.pdf" download><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg><span>Descargar</span></a></li>
+        <li class="file"><div class="ficon pdf">PDF</div><div><h4>05 · Tarjeta de cabina</h4><p>Una página: demos, frases de cierre y de emergencia.</p><div class="sz">1 página · 36 KB</div></div><a class="btn btn-soft btn-sm dl" href="descargas/05-Tarjeta-de-cabina.pdf" download><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg><span>Descargar</span></a></li>
+        <li class="file"><div class="ficon pdf">PDF</div><div><h4>06 · Banco de preguntas</h4><p>Las preguntas que más salen, con respuesta preparada.</p><div class="sz">352 KB</div></div><a class="btn btn-soft btn-sm dl" href="descargas/06-Banco-de-preguntas.pdf" download><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg><span>Descargar</span></a></li>
+        <li class="file"><div class="ficon zip">ZIP</div><div><h4>Corridas capturadas</h4><p>Los seis respaldos en markdown.</p><div class="sz">17 KB</div></div><a class="btn btn-soft btn-sm dl" href="descargas/respaldos.zip" download><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg><span>Descargar</span></a></li>
+        <li class="file"><div class="ficon zip">ZIP</div><div><h4>Documentación completa</h4><p>Los seis PDF, el ambiente, las corridas y las fuentes editables en markdown.</p><div class="sz">3 MB</div></div><a class="btn btn-red btn-sm dl" href="descargas/documentacion-webinar.zip" download><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg><span>Descargar</span></a></li>
+      </ul>
+    </div>
+
+    <a class="more card pressable rv" href="../#descargas" style="margin-top:22px">
+      <span class="more-ic" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M13 3.5v13m0 0 5-5m-5 5-5-5M5 21.5h16"/></svg></span>
+      <div><h3>El material para llevarte y el kit</h3><p>El manual, la tarjeta de referencia, la guía de 30 días y las trece skills están en la página principal.</p></div>
+      <span class="chev" aria-hidden="true">›</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <span class="brand"><span class="o">Omni</span><span class="s">Sys</span></span>
+      <span class="foot-t">Innovación y Preventa</span>
+    </div>
+    <nav aria-label="Pie">
+      <a href="../">Inicio</a>
+      <a href="../#descargas">Descargas</a>
+      <span>Webinar · 30 de septiembre de 2026</span>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>
