@@ -69,7 +69,7 @@
   /* ══════════════════════════════════════════════════════════════
      Respuesta inmediata al presionar (en pointerdown, no en click)
      ══════════════════════════════════════════════════════════════ */
-  var PRESS = ".btn,.pressable,.sk,.copy,.reading a,.rail-ctrl button,.sheet-close,.docs a";
+  var PRESS = ".btn,.pressable,.sk,.copy,.reading a,.chapters a,.play,.sheet-close";
   document.addEventListener("pointerdown", function (e) {
     if (e.button !== 0) return;
     var el = e.target.closest(PRESS); if (!el) return;
@@ -177,33 +177,98 @@
   });
 
   /* ══════════════════════════════════════════════════════════════
-     Barra: material sobre la portada oscura, borde al desplazar,
-     sección activa
+     Navegación al estilo apple.com: barra global que se va, barra
+     local que se queda y cambia de material según lo que tiene debajo,
+     menú de pantalla completa y desplegable de secciones en móvil.
      ══════════════════════════════════════════════════════════════ */
-  var nav = $("#nav"), hero = $(".hero");
-  if (nav) {
-    var alScroll = function () {
-      var y = window.scrollY;
-      nav.classList.toggle("scrolled", y > 4);
-      nav.classList.toggle("on-dark", !!hero && y < hero.offsetHeight - 56);
+  var lnav = $("#lnav"), menuBtn = $(".menu-btn"), menu = $("#menu");
+  if (menuBtn && menu) {
+    var menuAbierto = function () { return document.documentElement.classList.contains("menu-open"); };
+    var setMenu = function (open) {
+      document.documentElement.classList.toggle("menu-open", open);
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      menuBtn.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      menu.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) setTimeout(function () { var a = $("a", menu); if (a) a.focus({ preventScroll: true }); }, 180);
     };
-    window.addEventListener("scroll", alScroll, { passive: true }); alScroll();
+    menuBtn.addEventListener("click", function () { setMenu(!menuAbierto()); });
+    $$("a", menu).forEach(function (a) { a.addEventListener("click", function () { setMenu(false); }); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && menuAbierto()) { setMenu(false); menuBtn.focus(); } });
+    window.addEventListener("resize", function () { if (window.innerWidth > 833 && menuAbierto()) setMenu(false); });
   }
-  var links = $$(".nav-links a");
-  if ("IntersectionObserver" in window) {
-    var spy = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        links.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); });
-      });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    links.forEach(function (a) { var h = a.getAttribute("href"); if (h[0] !== "#") return; var s = document.getElementById(h.slice(1)); if (s) spy.observe(s); });
+  if (lnav) {
+    var tog = $(".lnav-toggle", lnav);
+    var setDrop = function (open) { lnav.classList.toggle("open", open); tog.setAttribute("aria-expanded", open ? "true" : "false"); };
+    tog.addEventListener("click", function (e) { e.stopPropagation(); setDrop(!lnav.classList.contains("open")); });
+    $$(".lnav-drop a", lnav).forEach(function (a) { a.addEventListener("click", function () { setDrop(false); }); });
+    document.addEventListener("click", function (e) { if (!lnav.contains(e.target)) setDrop(false); });
+  }
 
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
-    $$(".rv").forEach(function (x) { io.observe(x); });
-  } else $$(".rv").forEach(function (x) { x.classList.add("in"); });
+  /* ── todo lo que depende del scroll, en un solo cuadro ── */
+  var bloques = $$("main > section, main > nav, footer");
+  var lnavLinks = $$(".lnav-links a");
+  var secciones = lnavLinks.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var stage = $("#stage"), win = $("#window");
+  var palabras = [], words = $("#words");
+  if (words) {
+    words.innerHTML = words.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + esc(w) + "</span>"; }).join(" ");
+    palabras = $$(".w", words);
+  }
+  var pasos = $$("#stepper li"), linea = $("#timeline"), relleno = linea && $(".fill", linea), hitos = linea ? $$("li", linea) : [];
+  var pendiente = false;
+  function cuadro() {
+    pendiente = false;
+    var vh = window.innerHeight;
+
+    // material de la barra local según lo que queda debajo
+    if (lnav) {
+      var y = lnav.getBoundingClientRect().bottom, oscuro = true;
+      for (var i = 0; i < bloques.length; i++) {
+        var r = bloques[i].getBoundingClientRect();
+        if (r.top <= y && r.bottom > y) { oscuro = bloques[i].matches(".dark,.hero"); break; }
+      }
+      lnav.classList.toggle("light", !oscuro);
+      var activa = -1;
+      secciones.forEach(function (s, k) { if (s && s.getBoundingClientRect().top <= 140) activa = k; });
+      lnavLinks.forEach(function (a, k) { a.classList.toggle("on", k === activa); });
+    }
+
+    // la terminal de la portada crece y se asienta con el scroll
+    if (stage && win && !REDUCE) {
+      var rs = stage.getBoundingClientRect();
+      var p = clamp((vh - rs.top) / (vh * 0.8), 0, 1);
+      win.style.transform = "translateY(" + ((1 - p) * 48).toFixed(1) + "px) scale(" + (0.86 + 0.14 * p).toFixed(4) + ")";
+    }
+
+    // el manifiesto se enciende palabra por palabra
+    if (palabras.length && !REDUCE) {
+      var rw = words.getBoundingClientRect();
+      var q = clamp((vh * 0.82 - rw.top) / (rw.height + vh * 0.3), 0, 1);
+      var n = Math.round(q * palabras.length);
+      palabras.forEach(function (w, k) { w.classList.toggle("lit", k < n); });
+    }
+
+    // el paso del destilador que está al centro de la pantalla
+    if (pasos.length && window.innerWidth > 1068) {
+      var mejor = 0, dist = Infinity;
+      pasos.forEach(function (li, k) {
+        var r = li.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - vh / 2);
+        if (d < dist) { dist = d; mejor = k; }
+      });
+      pasos.forEach(function (li, k) { li.classList.toggle("on", k === mejor); });
+    }
+
+    // la línea de 30 días se llena con el avance
+    if (linea) {
+      var rl = linea.getBoundingClientRect(), marca = vh * 0.62;
+      relleno.style.transform = "scaleY(" + clamp((marca - rl.top) / rl.height, 0, 1).toFixed(4) + ")";
+      hitos.forEach(function (li) { li.classList.toggle("on", li.getBoundingClientRect().top + 12 < marca); });
+    }
+  }
+  function pedir() { if (!pendiente) { pendiente = true; requestAnimationFrame(cuadro); } }
+  window.addEventListener("scroll", pedir, { passive: true });
+  window.addEventListener("resize", pedir);
+  cuadro();
 
   /* ══════════════════════════════════════════════════════════════
      Control segmentado · el indicador es un resorte en X y en ancho
@@ -241,96 +306,111 @@
   }
 
   /* ══════════════════════════════════════════════════════════════
-     Carrusel · con ratón se arrastra 1:1, se lanza con momento y
-     aterriza en la tarjeta más cercana al punto proyectado. Con el
-     dedo usa el scroll nativo, que ya hace todo esto.
+     Galería de la agenda, al estilo "conoce lo más destacado":
+     una tarjeta al centro, paginación con puntos, recorrido automático
+     que se pausa en cuanto la persona toma el control. Con ratón se
+     arrastra 1:1 y se lanza con momento; con el dedo usa el scroll nativo.
      ══════════════════════════════════════════════════════════════ */
-  $$(".rail").forEach(function (rail) {
-    var track = $(".rail-track", rail);
-    var ctrl = document.querySelector('[data-rail="' + rail.id + '"]');
-    var prev = ctrl && $(".prev", ctrl), next = ctrl && $(".next", ctrl);
-    var sScroll = new Spring({ response: 0.5, damping: 1, rest: 0.5, onUpdate: function (v) { rail.scrollLeft = v; } });
-    var sOver = new Spring({ response: 0.4, damping: 1, rest: 0.3, onUpdate: function (v) { track.style.transform = v ? "translateX(" + v + "px)" : ""; } });
+  var gal = $("#gallery");
+  if (gal) {
+    var track = $(".gallery-track", gal), tiles = $$(".tile", gal), dots = $(".dots"), play = $(".play");
+    var cur = 0, playing = false, inView = false, DUR = 6000, timer = null;
+    dots.innerHTML = tiles.map(function (t, i) { return '<button type="button" role="tab" aria-label="Demo ' + (i + 1) + '"><i></i></button>'; }).join("");
+    var db = $$("button", dots);
+    var sS = new Spring({ response: 0.6, damping: 1, rest: 0.5, onUpdate: function (v) { gal.scrollLeft = v; } });
+    var sO = new Spring({ response: 0.4, damping: 1, rest: 0.3, onUpdate: function (v) { track.style.transform = v ? "translateX(" + v + "px)" : ""; } });
+    var gmax = function () { return gal.scrollWidth - gal.clientWidth; };
+    var gpos = function (i) { var t = tiles[i]; return clamp(t.offsetLeft - (gal.clientWidth - t.offsetWidth) / 2, 0, gmax()); };
+    var gnear = function (x) { var b = 0; tiles.forEach(function (t, i) { if (Math.abs(gpos(i) - x) < Math.abs(gpos(b) - x)) b = i; }); return b; };
 
-    function max() { return rail.scrollWidth - rail.clientWidth; }
-    function puntos() {
-      var pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
-      return $$(".demo", track).map(function (c) { return clamp(c.offsetLeft - pad, 0, max()); });
-    }
-    function cercano(x) { var p = puntos(), best = p[0]; p.forEach(function (q) { if (Math.abs(q - x) < Math.abs(best - x)) best = q; }); return best; }
-    function ir(x, v, amortiguado) {
-      rail.classList.add("animating");
-      sScroll.value = rail.scrollLeft;
-      sScroll.to(x, { velocity: v || 0, damping: amortiguado ? 0.86 : 1, response: 0.5, onRest: function () { rail.classList.remove("animating"); botones(); } });
-    }
-    function botones() {
-      if (!prev) return;
-      prev.disabled = rail.scrollLeft <= 2;
-      next.disabled = rail.scrollLeft >= max() - 2;
-    }
-    rail.addEventListener("scroll", botones, { passive: true }); botones();
-    window.addEventListener("resize", botones);
+    var pintarPunto = function () {
+      db.forEach(function (d) { var i = $("i", d); i.style.transition = "none"; i.style.width = "0"; });
+      var a = db[cur] && $("i", db[cur]); if (!a) return;
+      if (playing && inView) { void a.offsetWidth; a.style.transition = "width " + DUR + "ms linear"; a.style.width = "100%"; }
+      else a.style.width = "100%";
+    };
+    var programar = function () {
+      clearTimeout(timer);
+      if (playing && inView) timer = setTimeout(function () { gir(cur + 1); programar(); }, DUR);
+    };
+    var marcar = function (i) {
+      cur = i;
+      db.forEach(function (d, k) { d.classList.toggle("on", k === i); d.setAttribute("aria-selected", k === i ? "true" : "false"); });
+      tiles.forEach(function (t, k) { t.classList.toggle("dim", k !== i); t.setAttribute("aria-hidden", k === i ? "false" : "true"); });
+      pintarPunto();
+    };
+    var gir = function (i, v, rebote) {
+      i = (i + tiles.length) % tiles.length; marcar(i);
+      gal.classList.add("animating");
+      sS.value = gal.scrollLeft;
+      sS.to(gpos(i), { velocity: v || 0, damping: rebote ? 0.86 : 1, response: 0.6, onRest: function () { gal.classList.remove("animating"); } });
+    };
+    var setPlaying = function (p) {
+      playing = p; play.classList.toggle("paused", !p);
+      play.setAttribute("aria-label", p ? "Pausar el recorrido" : "Reproducir el recorrido");
+      pintarPunto(); programar();
+    };
+    var tomarControl = function () { if (playing) setPlaying(false); };
 
-    if (prev) {
-      prev.addEventListener("click", function () {
-        var p = puntos(), cur = sScroll.raf ? sScroll.target : rail.scrollLeft;
-        var dest = p.filter(function (q) { return q < cur - 4; }).pop(); ir(dest == null ? 0 : dest);
-      });
-      next.addEventListener("click", function () {
-        var p = puntos(), cur = sScroll.raf ? sScroll.target : rail.scrollLeft;
-        var dest = p.filter(function (q) { return q > cur + 4; })[0]; ir(dest == null ? max() : dest);
-      });
-    }
-
-    var drag = null, tragarClick = false;
-    rail.addEventListener("pointerdown", function (e) {
-      if (e.pointerType !== "mouse" || e.button !== 0) {
-        // un dedo toma el control: detén cualquier animación en curso
-        sScroll.stop(); rail.classList.remove("animating"); return;
-      }
-      sScroll.stop(); sOver.stop();
-      drag = { x0: e.clientX, s0: rail.scrollLeft - sOver.value, moved: false, id: e.pointerId, t: new Tracker() };
-      drag.t.add(e.clientX);
+    play.addEventListener("click", function () { if (!playing && cur === tiles.length - 1) gir(0); setPlaying(!playing); });
+    db.forEach(function (d, i) { d.addEventListener("click", function () { tomarControl(); gir(i); }); });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; pintarPunto(); programar(); }, { threshold: 0.45 }).observe(gal);
+    gal.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); tomarControl(); gir(cur + 1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); tomarControl(); gir(cur - 1); }
     });
-    rail.addEventListener("pointermove", function (e) {
-      if (!drag || e.pointerId !== drag.id) return;
-      var dx = e.clientX - drag.x0;
-      if (!drag.moved) {
-        if (Math.abs(dx) < 6) return; // histéresis antes de comprometerse al arrastre
-        drag.moved = true; rail.classList.add("dragging");
-        try { rail.setPointerCapture(drag.id); } catch (_) {}
-      }
-      drag.t.add(e.clientX);
-      var pos = drag.s0 - dx, m = max(), o = 0;
-      if (pos < 0) { o = rubber(-pos, rail.clientWidth); pos = 0; }
-      else if (pos > m) { o = -rubber(pos - m, rail.clientWidth); pos = m; }
-      rail.scrollLeft = pos; sOver.set(o);
+    var sync;
+    gal.addEventListener("scroll", function () {
+      if (sS.raf || gdrag) return;
+      clearTimeout(sync); sync = setTimeout(function () { var n = gnear(gal.scrollLeft); if (n !== cur) marcar(n); }, 90);
+    }, { passive: true });
+    gal.addEventListener("click", function (e) {
+      var t = e.target.closest(".tile"); if (!t || e.target.closest("button")) return;
+      var i = tiles.indexOf(t); if (i !== cur) { tomarControl(); gir(i); }
     });
-    function soltar(e) {
-      if (!drag || e.pointerId !== drag.id) return;
-      var d = drag; drag = null;
+
+    var gdrag = null, gtragar = false;
+    gal.addEventListener("pointerdown", function (e) {
+      tomarControl();
+      if (e.pointerType !== "mouse" || e.button !== 0) { sS.stop(); gal.classList.remove("animating"); return; }
+      sS.stop(); sO.stop();
+      gdrag = { x0: e.clientX, s0: gal.scrollLeft - sO.value, moved: false, id: e.pointerId, t: new Tracker() };
+      gdrag.t.add(e.clientX);
+    });
+    gal.addEventListener("pointermove", function (e) {
+      if (!gdrag || e.pointerId !== gdrag.id) return;
+      var dx = e.clientX - gdrag.x0;
+      if (!gdrag.moved) {
+        if (Math.abs(dx) < 6) return;
+        gdrag.moved = true; gal.classList.add("dragging");
+        try { gal.setPointerCapture(gdrag.id); } catch (_) {}
+      }
+      gdrag.t.add(e.clientX);
+      var p = gdrag.s0 - dx, m = gmax(), o = 0;
+      if (p < 0) { o = rubber(-p, gal.clientWidth); p = 0; }
+      else if (p > m) { o = -rubber(p - m, gal.clientWidth); p = m; }
+      gal.scrollLeft = p; sO.set(o);
+    });
+    var gsoltar = function (e) {
+      if (!gdrag || e.pointerId !== gdrag.id) return;
+      var d = gdrag; gdrag = null;
       if (!d.moved) return;
-      tragarClick = true; setTimeout(function () { tragarClick = false; }, 0);
-      rail.classList.add("animating"); // el snap nativo no debe saltar antes de que el resorte tome el control
-      rail.classList.remove("dragging");
-      var v = -d.t.velocity(); // velocidad del scroll, px/s
-      if (Math.abs(sOver.value) > 0.5) {
-        sOver.to(0, { damping: 1, response: 0.4 });
-        ir(rail.scrollLeft <= 1 ? 0 : max(), 0);
-        return;
-      }
-      ir(cercano(rail.scrollLeft + project(v)), v, Math.abs(v) > 300);
-    }
-    rail.addEventListener("pointerup", soltar);
-    rail.addEventListener("pointercancel", soltar);
-    rail.addEventListener("click", function (e) { if (tragarClick) { e.preventDefault(); e.stopPropagation(); } }, true);
-    rail.addEventListener("dragstart", function (e) { e.preventDefault(); });
-    rail.addEventListener("keydown", function (e) {
-      if (e.target !== rail) return;
-      if (e.key === "ArrowRight" && next) { e.preventDefault(); next.click(); }
-      if (e.key === "ArrowLeft" && prev) { e.preventDefault(); prev.click(); }
-    });
-  });
+      gtragar = true; setTimeout(function () { gtragar = false; }, 0);
+      gal.classList.add("animating"); gal.classList.remove("dragging");
+      var v = -d.t.velocity();
+      if (Math.abs(sO.value) > 0.5) { sO.to(0, { damping: 1, response: 0.4 }); gir(gal.scrollLeft <= 1 ? 0 : tiles.length - 1); return; }
+      gir(gnear(gal.scrollLeft + project(v)), v, Math.abs(v) > 300);
+    };
+    gal.addEventListener("pointerup", gsoltar);
+    gal.addEventListener("pointercancel", gsoltar);
+    gal.addEventListener("click", function (e) { if (gtragar) { e.preventDefault(); e.stopPropagation(); } }, true);
+    gal.addEventListener("dragstart", function (e) { e.preventDefault(); });
+    window.addEventListener("resize", function () { sS.set(gpos(cur)); });
+
+    marcar(0);
+    requestAnimationFrame(function () { gal.scrollLeft = gpos(0); });
+    setPlaying(!REDUCE);
+  }
 
   /* ══════════════════════════════════════════════════════════════
      Markdown mínimo para leer skills y corridas dentro de la página
