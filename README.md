@@ -1,6 +1,6 @@
 # Skills con Claude Code · Materiales del taller
 
-Landing del taller impartido por OmniSys el 30 de septiembre de 2026. Publicada con GitHub Pages.
+Landing del webinar de OmniSys del 1 de octubre de 2026. Publicada con GitHub Pages.
 
 ## Cambiar la fuente de descarga a Google Drive
 

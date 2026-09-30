@@ -248,8 +248,8 @@ html.menu-open,html.menu-open body{overflow:hidden}
 .cell{container-type:inline-size;position:relative;border-radius:28px;padding:clamp(24px,3vw,40px);background:var(--surface);overflow:hidden;display:flex;flex-direction:column}
 .paper .cell{background:var(--white)}
 @media (prefers-color-scheme:dark){.paper .cell{background:var(--surface)}}
-.cell .num{font-family:var(--f-d);font-weight:800;font-size:clamp(3rem,2rem + 5vw,7rem);font-size:min(7rem,26cqi);line-height:1;padding-bottom:.06em;white-space:nowrap;letter-spacing:-.06em;color:var(--ink);font-variant-numeric:tabular-nums}
-.cell .unit{font-family:var(--f-d);font-weight:700;font-size:clamp(1.25rem,1rem + .8vw,1.75rem);letter-spacing:-.03em;color:var(--ink);margin:6px 0 12px}
+.cell .num{display:block;max-width:100%;font-family:var(--f-d);font-weight:800;font-size:clamp(3rem,2rem + 5vw,7rem);font-size:min(7rem,26cqi);line-height:1;padding-bottom:.06em;white-space:nowrap;letter-spacing:-.06em;color:var(--ink);font-variant-numeric:tabular-nums}
+.cell .unit{font-family:var(--f-d);font-weight:700;font-size:clamp(1.25rem,1rem + .8vw,1.75rem);line-height:1.15;letter-spacing:-.03em;color:var(--ink);margin:10px 0 14px}
 .cell p{color:var(--ink-3);margin:auto 0 0;font-size:1rem;max-width:36ch}
 .c-a{grid-column:span 4;grid-row:span 2;background:var(--night)!important;color:#fff}
 .c-a .num{font-size:clamp(3.5rem,2rem + 8vw,10rem);font-size:min(11rem,15cqi);background:linear-gradient(180deg,#fff 20%,#9DB9F4);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -560,6 +560,34 @@ html.sheet-lock,html.sheet-lock body{overflow:hidden}
 .toast.show{transform:translate(-50%,0) scale(1);opacity:1}
 .toast svg{width:16px;height:16px;flex:none;fill:none;stroke:#6BDC96;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
+
+/* ══════════════════════════════════════════════════════════════
+   Animaciones
+   Entradas al hacer scroll (una vez), escalonadas; números que cuentan;
+   la terminal que escribe; íconos de paquete que responden al puntero.
+   Todo se desactiva con movimiento reducido.
+   ══════════════════════════════════════════════════════════════ */
+.js [data-anim]{opacity:0;transform:translateY(36px);filter:blur(8px);
+  transition:opacity .9s var(--ease),transform 1.15s var(--ease),filter .9s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
+.js [data-anim="scale"]{transform:translateY(28px) scale(.94)}
+.js [data-anim].in{opacity:1;transform:none;filter:none}
+.js .chapters li{opacity:0;transform:translateY(12px);animation:rise .8s var(--ease) forwards;animation-delay:calc(.5s + var(--i,0) * 60ms)}
+.js .window .ln{opacity:0;animation:typeIn .45s var(--ease) forwards;animation-delay:calc(1.1s + var(--i,0) * 120ms)}
+@keyframes typeIn{from{opacity:0;filter:blur(4px)}to{opacity:1;filter:none}}
+.caret{display:inline-block;width:.55em;height:1.1em;margin-left:2px;vertical-align:-.18em;background:var(--sky-2);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-glow{will-change:transform}
+.tile{transform-origin:50% 50%}
+.tile.dim{opacity:.5;transform:scale(.94)}
+.pk-art{transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.js .pk[data-anim] .pk-art{transform:scale(.6) rotate(-8deg);transition:transform 1.1s cubic-bezier(.34,1.4,.64,1),box-shadow .7s var(--ease);transition-delay:calc(.15s + var(--i,0) * 90ms)}
+.js .pk[data-anim].in .pk-art{transform:none}
+@media (hover:hover) and (pointer:fine){
+  .pk:hover .pk-art{transform:translateY(-8px) rotate(-4deg) scale(1.04);box-shadow:0 40px 70px -24px rgba(13,26,69,.55);transition-delay:0s}
+  .cell{transition:transform .6s var(--ease)}
+}
+.cell .num{font-variant-numeric:tabular-nums}
+
 /* portada: una sola entrada orquestada */
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .js .intro>*{animation:rise 1s var(--ease) both}
@@ -626,6 +654,9 @@ html.sheet-lock,html.sheet-lock body{overflow:hidden}
 
 /* ══ accesibilidad ══ */
 @media (prefers-reduced-motion:reduce){
+  .js [data-anim],.js .chapters li,.js .window .ln,.js .pk[data-anim] .pk-art{opacity:1!important;transform:none!important;filter:none!important;animation:none!important}
+  .caret{animation:none}
+  .tile.dim{transform:none}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
   .btn,.pressable,.sk,.copy,.play,.sheet-close,.tile,.stepper li,.menu li,.menu-btn span{transition-property:background-color,border-color,color,opacity!important}
   .btn.is-pressed,.pressable.is-pressed,.sk.is-pressed,.copy.is-pressed,.play.is-pressed{transform:none}

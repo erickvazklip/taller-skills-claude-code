@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/estilos.css">
+<link rel="stylesheet" href="assets/estilos.css?v=20260930d">
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body data-base="">
@@ -44,7 +44,7 @@
     <li><a href="#documentacion">Documentación</a></li>
     <li><a href="#treinta">Tus primeros 30 días</a></li>
   </ul>
-  <p class="menu-sub">Webinar en vivo el 30 de septiembre de 2026, a las 9:00 h de la Ciudad de México.</p>
+  <p class="menu-sub">Webinar en vivo el jueves 1 de octubre de 2026, a las 9:00 h de la Ciudad de México.</p>
 </div>
 
 <!-- ═════ barra local · se queda arriba ═════ -->
@@ -77,7 +77,7 @@
 <section class="hero" id="inicio">
   <div class="hero-glow" aria-hidden="true"></div>
   <div class="wrap-wide hero-in intro">
-    <p class="hero-date">Webinar en vivo, 30 de septiembre de 2026</p>
+    <p class="hero-date">Webinar en vivo el jueves 1 de octubre, 9:00 h CDMX</p>
     <h1>Skills con Claude Code</h1>
     <p class="hero-claim">Deja de repetir el mismo prompt. Enséñaselo una vez.</p>
     <div class="hero-cta">
@@ -88,16 +88,16 @@
   <div class="stage" id="stage">
     <div class="window" id="window" aria-label="Una skill funcionando en la terminal">
       <div class="window-bar"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>~/.claude/skills/redactando-commits/SKILL.md</span></div>
-<pre><span class="dim">---</span>
-<span class="k">name:</span> <span class="v">redactando-commits</span>
-<span class="k">description:</span> <span class="v">Redacta el mensaje de commit a partir de los cambios
-  preparados, siguiendo commits convencionales. Úsala cuando el
-  usuario pida un commit o un mensaje de commit.</span>
-<span class="dim">---</span>
-
-<span class="me">&gt; dame un mensaje de commit para esto</span>
-<span class="ok">✓ skill cargada sin escribir /</span>
-<span class="v">feat(facturas): agrega cupones de descuento</span></pre>
+<pre><span class="ln" style="--i:0"><span class="dim">---</span></span>
+<span class="ln" style="--i:1"><span class="k">name:</span> <span class="v">redactando-commits</span></span>
+<span class="ln" style="--i:2"><span class="k">description:</span> <span class="v">Redacta el mensaje de commit a partir de los cambios</span></span>
+<span class="ln" style="--i:3"><span class="v">  preparados, siguiendo commits convencionales. Úsala cuando el</span></span>
+<span class="ln" style="--i:4"><span class="v">  usuario pida un commit o un mensaje de commit.</span></span>
+<span class="ln" style="--i:5"><span class="dim">---</span></span>
+<span class="ln" style="--i:6"></span>
+<span class="ln" style="--i:7"><span class="me">&gt; dame un mensaje de commit para esto</span></span>
+<span class="ln" style="--i:8"><span class="ok">✓ skill cargada sin escribir /</span></span>
+<span class="ln" style="--i:9"><span class="v">feat(facturas): agrega cupones de descuento</span><span class="caret" aria-hidden="true"></span></span></pre>
     </div>
   </div>
 </section>
@@ -122,7 +122,7 @@
     <p class="lead">38 minutos de exposición y 52 con la terminal en pantalla. Cada demo tiene su corrida capturada paso a paso, para que la repases a tu ritmo.</p>
   </div>
 
-  <div class="gallery" id="gallery" tabindex="0" aria-roledescription="carrusel" aria-label="Las seis demos">
+  <div class="gallery" id="gallery" data-anim tabindex="0" aria-roledescription="carrusel" aria-label="Las seis demos">
     <div class="gallery-track">
       <article class="tile" aria-label="Demo 1 de 6">
         <div><span class="tile-min">Minuto 2</span><h3>La skill en tres minutos</h3><p>Una skill funcionando antes de explicar qué es. La promesa se demuestra, no se enuncia.</p></div>
@@ -150,7 +150,7 @@
       </article>
     </div>
   </div>
-  <div class="dotnav">
+  <div class="dotnav" data-anim style="--i:2">
     <div class="dots" role="tablist" aria-label="Elegir demo"></div>
     <button class="play" type="button" aria-label="Pausar el recorrido"><svg class="i-pause" viewBox="0 0 16 16"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16"><path d="M4 2.5v11a.6.6 0 0 0 .9.5l9-5.5a.6.6 0 0 0 0-1l-9-5.5a.6.6 0 0 0-.9.5z"/></svg></button>
   </div>
@@ -159,14 +159,14 @@
 <!-- ═════ descargas ═════ -->
 <section class="sec paper" id="descargas">
   <div class="wrap">
-    <div class="head head-c">
+    <div class="head head-c" data-anim>
       <span class="kick">Descargas</span>
       <h2 class="title">¿Qué paquete es para ti?</h2>
       <p class="lead">Todo se descarga aquí mismo, sin salir de la página.</p>
     </div>
 
     <div class="compare">
-      <article class="pk pk-1">
+      <article class="pk pk-1" data-anim style="--i:0">
         <div class="pk-art" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M12 6h17l9 9v27H12z"/><path d="M29 6v9h9M18 24h14M18 30h14M18 36h9"/></svg></div>
         <h3>Material para llevarte</h3>
         <p class="desc">Para leer, imprimir y consultar. Empieza por aquí.</p>
@@ -174,7 +174,7 @@
         <p class="size" data-peso="material">ZIP</p>
         <ul><li>Manual de Skills para Claude Code</li><li>Tarjeta de referencia para imprimir</li><li>Guía de tus primeros 30 días</li><li>El prompt destilador</li><li>Empieza aquí</li></ul>
       </article>
-      <article class="pk pk-2">
+      <article class="pk pk-2" data-anim style="--i:1">
         <div class="pk-art" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 5 41 14v20L24 43 7 34V14z"/><path d="M7 14l17 9 17-9M24 23v20"/></svg></div>
         <h3>Kit del asistente</h3>
         <p class="desc">Trece skills listas para instalar en tu equipo.</p>
@@ -182,7 +182,7 @@
         <p class="size" data-peso="kit">ZIP</p>
         <ul><li>13 skills en 4 dominios</li><li>3 plantillas en blanco</li><li>El destilador como skill</li><li>Todo navegable en un solo HTML</li><li>Fuentes editables en markdown</li></ul>
       </article>
-      <article class="pk pk-3">
+      <article class="pk pk-3" data-anim style="--i:2">
         <div class="pk-art" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="6" y="9" width="36" height="24" rx="3"/><path d="M13 17l5 4-5 4M22 25h9M17 40h14M24 33v7"/></svg></div>
         <h3>Documentación del webinar</h3>
         <p class="desc">Para repasar las demos o replicar el webinar.</p>
@@ -192,18 +192,18 @@
       </article>
     </div>
 
-    <div class="sub">
+    <div class="sub" data-anim>
       <h3>El material, archivo por archivo.</h3>
       <p>Cada documento del primer paquete también se descarga por separado.</p>
     </div>
-    <div class="card pad"><ul class="files" id="lista-material"></ul></div>
+    <div class="card pad" data-anim><ul class="files" id="lista-material"></ul></div>
 
-    <div class="sub">
+    <div class="sub" data-anim>
       <h3>Las trece skills del kit.</h3>
       <p>Tócalas para leerlas completas antes de instalarlas. Muestran las decisiones, no solo las reglas.</p>
     </div>
     <div class="cats" id="lista-kit"></div>
-    <div class="install">
+    <div class="install" data-anim>
       <div class="code">
         <div class="code-h"><span>Una categoría completa</span><button class="copy" type="button" data-copy="i-cat">Copiar</button></div>
 <pre id="i-cat">cp -r kit-skills/calidad-documental/* ~/.claude/skills/</pre>
@@ -229,26 +229,26 @@ git add .claude/skills && git commit -m "add: kit de skills"</pre>
 <!-- ═════ conceptos ═════ -->
 <section class="sec paper" id="conceptos">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-anim>
       <span class="kick">Conceptos</span>
       <h2 class="title">Todo lo que decide una skill cabe en siete números.</h2>
     </div>
 
     <div class="bento">
-      <div class="cell c-a"><span class="num">1,536</span><span class="unit">caracteres para la descripción</span><p>Qué hace y cuándo usarla, en tercera persona y con las palabras que escribirías tú. Si se pasa, se recorta por el final: el caso principal va primero.</p></div>
-      <div class="cell c-b c-red"><span class="num">500</span><span class="unit">líneas</span><p>El tope del SKILL.md. Si lo pasa, hay que partirla.</p></div>
-      <div class="cell c-c"><span class="num">1</span><span class="unit">nivel de referencia</span><p>De SKILL.md a reference.md, nunca más profundo.</p></div>
-      <div class="cell c-d"><span class="num">3</span><span class="unit">grados de libertad</span><p>Cuánto detalle depende de qué tan frágil es la tarea.</p><div class="pills" style="margin-top:18px"><span class="lvl lvl-a">Alta · prosa</span><span class="lvl lvl-m">Media · plantilla</span><span class="lvl lvl-b">Baja · comando exacto</span></div></div>
-      <div class="cell c-e"><span class="num">64</span><span class="unit">caracteres para el nombre</span><p>Un gerundio que describe la actividad: <code>revisando-prs</code>, no <code>helper</code>. El directorio define el comando.</p></div>
-      <div class="cell c-f"><span class="num">0</span><span class="unit">veces que escribes /</span><p>Si está bien descrita, se dispara sola.</p></div>
-      <div class="cell c-g"><span class="num">5</span><span class="unit">capas para elegir</span><div class="pills"><span class="pill">CLAUDE.md</span><span class="pill hl">Skill</span><span class="pill">Subagente</span><span class="pill">Hook</span><span class="pill">Servidor MCP</span></div></div>
+      <div class="cell c-a" data-anim="scale" style="--i:0"><span class="num">1,536</span><span class="unit">caracteres para la descripción</span><p>Qué hace y cuándo usarla, en tercera persona y con las palabras que escribirías tú. Si se pasa, se recorta por el final: el caso principal va primero.</p></div>
+      <div class="cell c-b c-red" data-anim="scale" style="--i:1"><span class="num">500</span><span class="unit">líneas</span><p>El tope del SKILL.md. Si lo pasa, hay que partirla.</p></div>
+      <div class="cell c-c" data-anim="scale" style="--i:2"><span class="num">1</span><span class="unit">nivel de referencia</span><p>De SKILL.md a reference.md, nunca más profundo.</p></div>
+      <div class="cell c-d" data-anim="scale" style="--i:3"><span class="num">3</span><span class="unit">grados de libertad</span><p>Cuánto detalle depende de qué tan frágil es la tarea.</p><div class="pills" style="margin-top:18px"><span class="lvl lvl-a">Alta · prosa</span><span class="lvl lvl-m">Media · plantilla</span><span class="lvl lvl-b">Baja · comando exacto</span></div></div>
+      <div class="cell c-e" data-anim="scale" style="--i:4"><span class="num">64</span><span class="unit">caracteres para el nombre</span><p>Un gerundio que describe la actividad: <code>revisando-prs</code>, no <code>helper</code>. El directorio define el comando.</p></div>
+      <div class="cell c-f" data-anim="scale" style="--i:5"><span class="num">0</span><span class="unit">veces que escribes /</span><p>Si está bien descrita, se dispara sola.</p></div>
+      <div class="cell c-g" data-anim="scale" style="--i:6"><span class="num">5</span><span class="unit">capas para elegir</span><div class="pills"><span class="pill">CLAUDE.md</span><span class="pill hl">Skill</span><span class="pill">Subagente</span><span class="pill">Hook</span><span class="pill">Servidor MCP</span></div></div>
     </div>
 
     <div class="deep">
-      <div class="head head-c" style="margin-bottom:32px">
+      <div class="head head-c" data-anim style="margin-bottom:32px">
         <h3 class="title-m">A fondo.</h3>
       </div>
-      <div class="seg-wrap">
+      <div class="seg-wrap" data-anim>
         <div class="seg" role="tablist" aria-label="Temas">
           <span class="seg-ind" aria-hidden="true"></span>
           <button role="tab" aria-selected="true" aria-controls="t-anat" id="b-anat">Anatomía</button>
@@ -259,7 +259,7 @@ git add .claude/skills && git commit -m "add: kit de skills"</pre>
         </div>
       </div>
 
-      <div class="panels">
+      <div class="panels" data-anim style="--i:1">
         <div class="panel" role="tabpanel" id="t-anat" aria-labelledby="b-anat">
           <div class="split">
             <div>
@@ -403,13 +403,13 @@ Dame el archivo y el mkdir. Nada más.</pre>
 <!-- ═════ documentación del webinar ═════ -->
 <section class="sec" id="documentacion">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-anim>
       <span class="kick">Documentación del webinar</span>
       <h2 class="title">Con esto se transmitió. Ahora es tuyo.</h2>
       <p class="lead">El ambiente que deja tu máquina igual que la de la transmisión, el guion de las demos y todo el paquete de documentación. Para repasar, o para replicar el webinar con tu equipo.</p>
     </div>
 
-    <div class="split">
+    <div class="split" data-anim>
       <div class="card paper-card pad" style="background:var(--bg-2)">
         <h3 class="h">Reprodúcelo en tu máquina</h3>
         <div class="tbl-wrap"><table class="tbl">
@@ -443,7 +443,7 @@ bash ambiente-demo/verificar.sh</pre>
 <!-- ═════ 30 días ═════ -->
 <section class="sec paper" id="treinta">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-anim>
       <span class="kick">Tus primeros 30 días</span>
       <h2 class="title">Para que esto no se quede en el webinar.</h2>
       <p class="lead">La mayoría de quienes ven un webinar no aplican nada. No es falta de interés: falta un siguiente paso concreto. Este es.</p>
@@ -452,15 +452,15 @@ bash ambiente-demo/verificar.sh</pre>
     <div class="timeline" id="timeline">
       <span class="fill" aria-hidden="true"></span>
       <ol>
-      <li><span class="when">Día 1, 20 minutos</span><h3>Instala una y observa.</h3><p>Copia <code>redactando-commits</code>, prepara un cambio y pide un mensaje de commit. Fíjate en que no escribiste <code>/</code>. Luego anota tu caso y destílalo.</p></li>
-      <li><span class="when">Semana 1</span><h3>Úsala, no la mejores.</h3><p>Tres usos reales. Una línea cada vez que tropiece. Sin datos de uso, las mejoras son suposiciones.</p></li>
-      <li><span class="when">Semana 2</span><h3>Una corrección y una skill más.</h3><p>Corrige una sola cosa con el ciclo A/B. La segunda, en otra categoría, sale en la mitad del tiempo.</p></li>
-      <li><span class="when">Semana 3</span><h3>Llévala al equipo.</h3><p>Límpiala con la variante para equipo del destilador, súbela al repositorio y pide una prueba sin explicar nada.</p></li>
-      <li><span class="when">Semana 4</span><h3>Mide y decide.</h3><p>¿Cuántas en uso real? ¿Cuál no se invocó en dos semanas? Corre <code>auditando-skills</code> sobre las tuyas.</p></li>
+      <li data-anim><span class="when">Día 1, 20 minutos</span><h3>Instala una y observa.</h3><p>Copia <code>redactando-commits</code>, prepara un cambio y pide un mensaje de commit. Fíjate en que no escribiste <code>/</code>. Luego anota tu caso y destílalo.</p></li>
+      <li data-anim><span class="when">Semana 1</span><h3>Úsala, no la mejores.</h3><p>Tres usos reales. Una línea cada vez que tropiece. Sin datos de uso, las mejoras son suposiciones.</p></li>
+      <li data-anim><span class="when">Semana 2</span><h3>Una corrección y una skill más.</h3><p>Corrige una sola cosa con el ciclo A/B. La segunda, en otra categoría, sale en la mitad del tiempo.</p></li>
+      <li data-anim><span class="when">Semana 3</span><h3>Llévala al equipo.</h3><p>Límpiala con la variante para equipo del destilador, súbela al repositorio y pide una prueba sin explicar nada.</p></li>
+      <li data-anim><span class="when">Semana 4</span><h3>Mide y decide.</h3><p>¿Cuántas en uso real? ¿Cuál no se invocó en dos semanas? Corre <code>auditando-skills</code> sobre las tuyas.</p></li>
       </ol>
     </div>
 
-    <div class="after">
+    <div class="after" data-anim>
       <div class="card pad" style="background:var(--surface)">
         <div class="checklist-h">
           <h3>Antes de dar una skill por terminada</h3>
@@ -498,17 +498,17 @@ bash ambiente-demo/verificar.sh</pre>
 <!-- ═════ frases ═════ -->
 <section class="sec dark" id="frases">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-anim>
       <span class="kick">Para llevarte</span>
       <h2 class="title">Una frase por demo.</h2>
     </div>
     <ol class="q-list">
-      <li>Todo eso estaba escrito en un archivo, una sola vez.</li>
-      <li>La descripción siempre está en contexto. El cuerpo, no.</li>
-      <li>Si no se dispara, el problema está en la descripción.</li>
-      <li>Nadie escribe un SKILL.md bueno de memoria y a la primera.</li>
-      <li>Los scripts se ejecutan, no se leen.</li>
-      <li>Las descripciones malas no las marca ninguna herramienta.</li>
+      <li data-anim>Todo eso estaba escrito en un archivo, una sola vez.</li>
+      <li data-anim>La descripción siempre está en contexto. El cuerpo, no.</li>
+      <li data-anim>Si no se dispara, el problema está en la descripción.</li>
+      <li data-anim>Nadie escribe un SKILL.md bueno de memoria y a la primera.</li>
+      <li data-anim>Los scripts se ejecutan, no se leen.</li>
+      <li data-anim>Las descripciones malas no las marca ninguna herramienta.</li>
     </ol>
   </div>
 </section>
@@ -534,13 +534,13 @@ bash ambiente-demo/verificar.sh</pre>
       </ul></div>
       <div><h4>OmniSys</h4><ul><li>Innovación y Preventa</li><li>Impartido por Erick Vázquez Granados</li></ul></div>
     </div>
-    <div class="legal"><span>Copyright © 2026 OmniSys S.A. de C.V.</span><span>Webinar en vivo el 30 de septiembre de 2026</span></div>
+    <div class="legal"><span>Copyright © 2026 OmniSys S.A. de C.V.</span><span>Webinar en vivo el 1 de octubre de 2026</span></div>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/materiales.js"></script>
-<script src="assets/app.js"></script>
+<script src="assets/materiales.js?v=20260930d"></script>
+<script src="assets/app.js?v=20260930d"></script>
 </body>
 </html>

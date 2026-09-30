@@ -110,8 +110,8 @@
 
   function lvl(g) { g = g.toLowerCase(); return g === "alta" ? "lvl-a" : g === "media" ? "lvl-m" : "lvl-b"; }
   var lk = $("#lista-kit");
-  if (lk) lk.innerHTML = (M.kitSkills || []).map(function (c) {
-    return '<article class="cat card rv"><div class="cat-h"><h3>' + esc(c.titulo) + "</h3><span>" + c.skills.length + " skills</span></div><ul>" +
+  if (lk) lk.innerHTML = (M.kitSkills || []).map(function (c, ci) {
+    return '<article class="cat card" data-anim style="--i:' + ci + '"><div class="cat-h"><h3>' + esc(c.titulo) + "</h3><span>" + c.skills.length + " skills</span></div><ul>" +
       c.skills.map(function (k) {
         return '<li><button class="sk" type="button" data-skill="' + esc(k.id) + '" data-cat="' + esc(c.cat) + '" aria-haspopup="dialog"><code>' + esc(k.id) +
           '</code><span class="sk-go"><span class="lvl ' + lvl(k.grado) + '">' + esc(k.grado) + "</span></span><p>" + esc(k.desc) + "</p></button></li>";
@@ -623,6 +623,78 @@
       });
     }
   });
+
+
+  /* ══════════════════════════════════════════════════════════════
+     Animaciones: entradas escalonadas al hacer scroll (una vez),
+     números que cuentan hasta su valor y que siempre caben en su
+     tarjeta, y el brillo de la portada con paralaje.
+     ══════════════════════════════════════════════════════════════ */
+  $$(".chapters li").forEach(function (li, i) { li.style.setProperty("--i", i); });
+
+  var nums = $$(".cell .num");
+  nums.forEach(function (n) { n.setAttribute("data-final", n.textContent); });
+  // Se mide con una copia fuera de la tarjeta: las animaciones de entrada
+  // escalan la tarjeta y falsearían la medida.
+  var regla = document.createElement("span");
+  regla.setAttribute("aria-hidden", "true");
+  regla.style.cssText = "position:absolute;left:-9999px;top:0;visibility:hidden;white-space:nowrap;font-size:100px;pointer-events:none";
+  document.body.appendChild(regla);
+  function ajustarNumeros() {
+    nums.forEach(function (n) {
+      var c = n.parentElement, cs = getComputedStyle(c), ns = getComputedStyle(n);
+      var disp = c.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      var max = c.classList.contains("c-a") ? 176 : 112;
+      regla.style.fontFamily = ns.fontFamily; regla.style.fontWeight = ns.fontWeight;
+      regla.style.letterSpacing = (parseFloat(ns.letterSpacing) / parseFloat(ns.fontSize) * 100 || 0) + "px";
+      regla.style.fontVariantNumeric = ns.fontVariantNumeric;
+      regla.textContent = n.getAttribute("data-final");
+      var w = regla.getBoundingClientRect().width || 1;
+      n.style.letterSpacing = "-.06em";
+      n.style.fontSize = Math.max(36, Math.min(max, disp / w * 100 * 0.95)).toFixed(1) + "px";
+    });
+  }
+  ajustarNumeros();
+  if (document.fonts) document.fonts.ready.then(ajustarNumeros);
+  if ("ResizeObserver" in window && $(".bento")) new ResizeObserver(ajustarNumeros).observe($(".bento"));
+  else window.addEventListener("resize", ajustarNumeros);
+
+  function contar(n) {
+    var fin = n.getAttribute("data-final"), meta = parseInt(fin.replace(/\D/g, ""), 10);
+    if (REDUCE || !meta || meta < 2) return;
+    var t0 = performance.now(), dur = 1400;
+    (function paso(t) {
+      var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+      n.textContent = Math.round(meta * e).toLocaleString("en-US");
+      if (p < 1) requestAnimationFrame(paso); else n.textContent = fin;
+    })(t0);
+  }
+
+  var animables = $$("[data-anim]");
+  if ("IntersectionObserver" in window && !REDUCE) {
+    var ioA = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in"); ioA.unobserve(e.target);
+        var n = e.target.querySelector && e.target.querySelector(".num");
+        if (n) setTimeout(function () { contar(n); }, 120 + (parseInt(getComputedStyle(e.target).getPropertyValue("--i"), 10) || 0) * 90);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    animables.forEach(function (x) { ioA.observe(x); });
+  } else animables.forEach(function (x) { x.classList.add("in"); });
+
+  var brillo = $(".hero-glow"), portada = $(".hero");
+  if (brillo && !REDUCE) {
+    var pendB = false;
+    window.addEventListener("scroll", function () {
+      if (pendB) return; pendB = true;
+      requestAnimationFrame(function () {
+        pendB = false;
+        var y = window.scrollY;
+        if (y < portada.offsetHeight) brillo.style.transform = "translateY(" + (y * 0.35).toFixed(1) + "px)";
+      });
+    }, { passive: true });
+  }
 
   /* ══════════════════════════════════════════════════════════════
      Lista de verificación, recordada en este navegador

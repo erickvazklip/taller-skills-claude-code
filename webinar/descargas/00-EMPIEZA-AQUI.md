@@ -1,6 +1,6 @@
 # Paquete del instructor
 
-Webinar **Skills con Claude Code** · 30 de septiembre de 2026, 9:00 · 90 min
+Webinar **Skills con Claude Code** · 1 de octubre de 2026, 9:00 · 90 min
 
 Este paquete cubre las dos partes del webinar. Está repartido entre dos
 personas.
